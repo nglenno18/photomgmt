@@ -1,0 +1,32 @@
+{
+"development":{
+  "QUOTAGUARD_STATIC_URL": "QuoteGuard Static Proxy URL (Routes traffic from Heroku to DB through Whitelisted Proxy IPs)",
+  "DB_URI":"MONGO_DB Variable",
+  "DB": "Google Cloud MySQL Database Instance",
+  "HOST":"Google Cloud MySQL Host",
+  "PT": "Port",
+  "US": "Google Cloud MySQL Database UserName",
+  "PW": "Google Cloud MySQL Database Password",
+  "EMAIL_SENDER": "Email Send Address",
+  "EMAIL_PASSWORD": "Email Sender Password",
+  "EMAIL_HOST":"Email NodeMailer Host",
+  "CCLIST": "Email1, Email2, Email3",
+  "WEBHOOK_SECRET": "(Not Needed)",
+  "WL": "(Not Needed - Whitelists Incoming Heroku Traffic) Whitelisted IP 1; WhiteListed IP 2; ::ffff:127.0.0.1; ::1",
+  "TOKENS": "(Not Needed API KEY) 22232.SDSADAg3f.54terst5yl8h7jtgil.8754rrewqasfsfaegvertesrcqjlet5ydEWa.grevwHJDFXTHGaXFSDFDSW-zTiDALA-I",
+  "type": "Cloud Key Type (Google Service Key)",
+  "project_id": "Cloud Project Id (Google Service Key)",
+  "private_key_id": "Cloud Private Key Id (Google Service Key)",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nCloud Instance Private Key\n-----END PRIVATE KEY-----\n (Google Service Key)",
+  "client_email": "Cloud Client Email (Google Service Key)",
+  "client_id": "Cloud Client Id (Google Service Key)",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth" (Google Service Key),
+  "token_uri": "https://oauth2.googleapis.com/token" (Google Service Key),
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs" (Google Service Key),
+  "client_x509_cert_url": "client_x509_cert_url" (Google Service Key),
+  "ROOT_FOLDER_ID" : "GoogleDriveFolderId",
+  "googleClientID": "Google Authentication App (URL) .apps.googleusercontent.com",
+  "googleClientSecret": "Google Authentication App (Secret)",
+  "cookieKey": "Session Middleware MongoDB Secret"
+  }
+}
