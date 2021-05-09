@@ -1,0 +1,205 @@
+#property_section{
+  padding: var(--standard_Padding);
+  display: block;
+  height: -webkit-fill-available;
+  /* width: auto; */
+}
+
+.property_section{
+  margin: 5px;
+  padding: calc(var(--standard_Padding) * 4);
+}
+
+caption{
+  font-size: 40px;
+}
+
+.viewdoc-button{
+	float:right;
+	background-color: transparent;
+	border: var(--standard_border);
+	box-shadow: 1px 2px 1px grey;
+	color: grey;
+	outline: none;
+}
+.hideFile{
+	display:none;
+}
+.viewdoc-button:hover{
+	background-color: transparent;
+	border: var(--standard_border);
+	box-shadow: var(--hover-box-shadow);
+	color: grey;
+	outline: none;
+}
+
+.detailDiv{
+	border: 1px solid grey;
+	margin: 10px auto;
+	vertical-align: center;
+	padding: calc(var(--standard_Padding) * 2);
+	padding-top: calc(var(--standard_Padding) * 5);
+}
+.detailDiv.dragOver, .fileField:hover{
+	border: 1px solid grey;
+	/* padding: calc(calc(var(--standard_Padding) * 2) + 1); */
+	/* padding-top: calc(calc(var(--standard_Padding) * 5) + 1); */
+	box-shadow: var(--hover-box-shadow);
+		vertical-align: center;
+	background-color: whitesmoke;
+	cursor: pointer;
+}
+.valueLabel:hover{
+	cursor: pointer;
+}
+#property_details input[type:text]{
+  background-color: grey;
+  outline: 0px;
+}
+#property_details p label{
+	font-weight: bold;
+	
+}
+#maplink:hover{
+	cursor: pointer;
+	color: grey;
+}
+.property_item:not(.highlighted){
+  padding: var(--standard_Padding);
+  border-width: 0px;
+}
+.property_item.highlighted{
+  padding: calc(var(--standard_Padding) - var(--highlight_border_width));
+  border: var(--highlight_border);
+}
+
+#property_table_container{
+  max-height: 600px;
+  display: block;
+  /* float:right; */
+}
+#property_details_Container{
+  min-height: calc(var(--sq_length) * 1);
+  min-width: calc(var(--sq_length) * 2);
+  height: var(--topside_detail_height);
+}
+
+@media (min-width:1400px){
+  #property_section{
+    height: var(--topside_height);
+  }
+  .property_section{
+    min-width: calc(var(--sq_length) - 500);
+    /* width: calc(var(--sq_length)*2); */
+    width: auto;
+  }
+  #property_table_container{
+    float: right;
+    max-width: 68%;
+    width: auto;
+  }
+  #property_details_Container{
+    float: left;
+    width: calc(var(--sq_length) * 2);
+  }
+}
+@media (max-width:1400px){      /*mobile device size*/
+  #property_section{
+    height: auto;
+  }
+  .property_section{
+    clear: both;
+    margin: 0 auto;
+    /* min-width: calc(var(--sq_length) - 200); */
+    width: var(--mobile-main-width);
+  }
+  #property_table_container{
+    clear: both;
+  }
+  #property_details_Container{
+    clear: both;
+    display: table;
+  }
+}
+
+
+/* END MOBILE DEVICE CONFIG */
+
+.keyLabel{
+  font-weight: bold;
+}
+#property_details{
+  clear: both;
+  border: var(--standard_border);
+  padding-left: calc(var(--standard_Padding) * 2);
+  padding-right: calc(var(--standard_Padding) * 2);
+  box-shadow: 1px 1px 1px grey inset;
+  /* min-height: calc(var(--sq_length) * 1); */
+  /* min-width: calc(var(--sq_length) * 1 - var(--standard_Padding) * 6); */
+  /* height: var(--topside_detail_height); */
+}
+.property_details{
+  padding: 5px;
+}
+table{
+  border: var(--standard_border);
+  /* min-width: 600px !important; */
+  width: 100%;
+  background-color: whitesmoke;
+  box-shadow: 0px -10px 50px 0px lightgrey inset;
+  border-spacing: 0px;
+  max-height: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 auto;
+  display: block;
+  border-radius: 4px;
+}
+
+tbody {
+  background-color: Transparent;
+  box-shadow: 0px -10px 50px 0px lightgrey inset;
+  display: table;
+  vertical-align: middle;
+  margin: 0 auto;
+  width:100%;
+}
+
+td{
+  /* border: var(--standard_border)!important; */
+  border-color: Transparent;
+  border-width: 0px;
+  /* padding-left: 10px; */
+}
+th{
+  border-bottom: var(--standard_border);
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  padding: 5px;
+  margin: 0 auto;
+  box-shadow: 0px 5px 12px 0px lightgrey;
+}
+tr{
+  border-collapse: collapse;
+  box-shadow: 0px -1px 10px 0px lightgrey inset;
+  border-radius: 3px;
+  background-color: Transparent;
+}
+
+tr:hover{
+  /* background-color: rgba(107, 206, 229, 0.2); */
+  box-shadow: 0px -1px 50px 0px grey inset;
+}
+tr.selected{
+  background-color: whitesmoke;
+  box-shadow: 0px -1px 50px 0px #6bcee5 inset;
+}
+
+.property_item label{
+  padding: 10px;
+}
+
+.clear{
+  clear: both;
+}

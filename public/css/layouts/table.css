@@ -1,0 +1,619 @@
+:root{
+  --oddshade: rgba(var(--themeR), var(--themeG), var(--themeB), 0.02);
+  --evenshade: rgba(var(--themeR), var(--themeG), var(--themeB), 0.12);
+  --highlight_col1: rgb(255, 255, 255, 0.4);
+
+  /*
+  --highlightshade: rgb(71, 95, 124, 0.2);
+  --highlightshade_opac: rgb(210, 215, 221);
+  --highlightrgb: rgb(71, 95, 124, 0.3);
+  --highlightrgb_Dark: rgb(71, 95, 124, 0.5);
+  --highlightrgb_Opaque: rgb(157, 169, 184, 1);
+  --highlightrgb_4: rgb(71, 95, 124, 0.4);
+  --blueThemeDark: #0c2c52bf;
+  --highlightchild:blue; */
+
+  /* --var(--lightgrey):lightgrey;
+  --grey: grey;
+  --darkgrey: darkgrey;
+  --grey: Transparent;
+  --darkgrey: Transparent;
+  */
+}
+
+/* .dataTables_scrollBody */
+#wo_table{
+  top: -1px;
+    position: relative;
+}
+#wo_table tr:not(.currentselection) [role="row"]{
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+#folder_list th{
+  text-align: left;
+  padding-left: 6px!important;
+}
+.folderphoto_count{
+  margin: 0 auto;
+  /* text-align: center; */
+  /* float:left; */
+  padding-left: 0px!important;
+  padding-right: 0px!important;
+}
+.folderDescription{
+  font-size: 90%;
+}
+
+.currentselection td{
+  /* background-color: white!important; */
+  /* border-bottom: 2px #0c2c52 solid !important; */
+  /* border-left: 4px blue solid; */
+  /* color: white !important;
+  background-color: darkgrey;
+  font-weight: bold!important; */
+  box-shadow: 0px 6px 4px 0px var(--grey);
+  font-weight: bold!important;
+  /* color: #0c2c52!important; */
+  /* background-color: white; */
+}
+.childCell{
+  border-top:0px!important;
+  background-color: Transparent!important;
+}
+.childCell td{
+  border-top:0px!important;
+
+  width: 90%;
+}
+.childCellRowIndex{
+  /* border-left: 2px solid #0c2c52!important; */
+  box-shadow: 3px 0px 1px 0px var(--bluetheme) inset;
+  padding: 0px!important;
+  font-size: 90%;
+  /* color: var(--blueThemeDark); */
+  border-top:0px!important;
+}
+tbody tr.odd, tbody tr.odd, tr.odd:not(.currentselection) .sorting_1:not(.selectedspacer){
+  background-color: var(--oddshade)!important;
+  /* background-color: Transparent !important; */
+}
+
+tbody tr.even, tbody tr.even, tr.even:not(.currentselection) .sorting_1:not(.selectedspacer){
+  background-color: var(--evenshade)!important;
+  /* background-color: Transparent!important; */
+}
+table.dataTable.display tbody tr:hover > .sorting_1, table.dataTable.order-column.hover tbody tr:hover > .sorting_1{
+  background-color: var(--oddshade)!important;
+}
+table.dataTable.display tbody tr.odd > .sorting_1, table.dataTable.order-column.stripe tbody tr.odd > .sorting_1{
+  background-color: var(--oddshade)!important;
+  background-color: Transparent!important;
+}
+table.dataTable.display tbody tr.even > .sorting_1, table.dataTable.order-column.stripe tbody tr.even > .sorting_1{
+  /* background-color: var(--evenshade)!important; */
+  background-color: Transparent!important;
+}
+.phases{
+  width: 80%!important;
+}
+
+tr.currentselection td.selectedspacer {
+  /* border-bottom: 1px #0c2c52 solid; */
+  border-left: 2px var(--bluetheme) solid;
+  background-color: var(--evenshade_opaque)!important;
+  /* box-shadow: -1px 1px 1px 0px var(--bluetheme); */
+}
+tr:not(.currentselection) td .col1{
+  border-left: 2px Transparent solid;
+}
+
+
+.currentselection tr.even td.sorting_1{
+  /* border-bottom: 1px #0c2c52 solid; */
+  background-color: var(--oddshade)!important;
+}
+.currentselection tr.odd td.sorting_1{
+  /* border-bottom: 1px #0c2c52 solid; */
+  background-color: var(--oddshade)!important;
+}
+
+.sorting_asc, .sorting_desc, .col1{
+  text-align: left;
+  padding-left: 5px!important;
+}
+
+#searchBarContainer{
+  /* margin-bottom: 15px; */
+  /* margin-top: 0px; */
+  margin-bottom: 0px;
+  position: relative;
+  top: -25px;
+}
+#detailsContainer, #property_dropdownContainer, #propBreak, .section_break:not(.endContainer), #photo_section{
+  position: relative;
+  top: -55px;
+}
+.midtext{
+  text-align:center;
+}
+
+.firstColumn{
+  /* width: 10px!important;
+  padding-right: 0px!important;
+  color: Transparent!important;
+  font-size: 0px;
+  padding-left: 0px!important;
+  text-orientation: sideways!important; */
+  /* display: none; */
+}
+.currentselection{
+  /* border-left: 1px solid blue; */
+  /* box-shadow: inset 0px 2px 1px var(--blueThemeDark), inset 0px -1px 1px var(--blueThemeDark), inset 3px 0px 6px 0px var(--blueThemeDark)!important; */
+  box-shadow: 3px 0px 0px 0px var(--bluetheme) inset;
+}
+.inline_refs_info, #po_table_info, .dataTables_info{
+  display: none;
+}
+
+.inline_refs{
+  /* overflow-x: scroll!important; */
+  /* border: 1px var(--grey) solid!important; */
+  border-radius: 2px!important;
+}
+.inline_refs thead{
+  z-index: -1;
+}
+.dataTables_scrollBody{
+  border: 0px var(--bluetheme) solid!important;
+}
+
+@media(max-width:1200px){
+  .labeldiv{
+    background-color: var(--highlightrgb_Dark);
+  }
+  .detailsGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(49%, 2fr));
+  }
+  .spacerbreaker{
+    background-color: lightgrey!important;
+  }
+  .labeldiv{
+    width: 99%;
+    background-color: var(--highlightrgb);
+  }
+  .labeldivContainer{
+    padding: 5px;
+  }
+  .valueDate{
+    width: 99%;
+    /* background-color: var(--table_grey); */
+    background-color: #ffffff9c;
+  }
+
+  #propertyLabel{
+    background-color: var(--table_grey);
+    padding-bottom: 5px;
+  }
+  #propertyRefs{
+    padding-top: 2px;
+  }
+  .valueDiv{
+    background-color: #ffffff9c;
+  }
+  .paddDiv{
+    padding: 5px;
+    /* width: 100%; */
+  }
+  #simplestats{
+    padding: 5px;
+    border: 1px Transparent solid;
+    border-bottom: var(--lightgrey) 1px solid;
+    /* border-radius: 3px; */
+    padding-top:0px;
+    padding-bottom: 0px;
+    /* margin-bottom: 2px; */
+  }
+  .labeldiv{
+    text-align: center;
+    margin-bottom: 2px!important;
+  }
+  .broadcell{
+    grid-column: 1/4;
+    grid-row: 1;
+    padding: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+    .hideColumn{
+      display: none;
+    }
+    .propertyTable{
+      width: 98%!important;
+      margin-top: 5px!important;
+    }
+    #propertyLabel{
+      padding-bottom: 10px;
+    }
+    .headerLabel{
+      margin: 0 auto;
+    }
+    #phaseLabelDiv, #phaseLabelDiv1{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(49%, 2fr));
+      padding: 10px;
+    }
+    #propertyTable{
+      grid-column: 1/2;
+      grid-row: 2;
+      border-right: 0px grey solid;
+      border-bottom-right-radius: 0px;
+      border-top-right-radius: 0px;
+    }
+    #propertyTable1{
+      grid-column: 2/3;
+      grid-row: 2;
+      border-left: 0px grey solid;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+    #propertyTable1 .valueDiv, #propertyTable1 .labelDiv{
+      margin-left: 20%;
+    }
+    #detailsGridWrap th, td{
+      /* text-align: left!important; */
+      font-size: 80%!important;
+    }
+    th{
+      /* font-size: 80%!important; */
+    }
+    #propertyGrid th, #propertyGrid td{
+      text-align: center!important;
+    }
+}
+@media(min-width: 1200px){
+  #phaseLabelDiv, #phaseLabelDiv1{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(49%, 2fr));
+  }
+  .broadcell{
+    grid-column: 2 / 4;
+    padding: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .valueDiv, .valueDate{
+    padding: 0px;
+    /* width: 99%; */
+    background-color: #ffffff9c;
+  }
+  .valueDiv label, .valueDate label{
+    background-color:Transparent;
+  }
+  .paddDiv{
+    padding: 3px;
+    /* width: 99%; */
+
+  }
+  .divend{
+    grid-column: 2;
+    grid-row: 1/4;
+    text-align: right;
+  }
+  .divstart{
+    grid-column: 1;
+    grid-row: 1/4;
+  }
+  .valueDate.nofiller{
+    /* display: none!important; */
+  }
+  .detailsGridWrap{
+    margin: 0 auto;
+    grid-template-columns: 35% 1fr;
+    margin-top:15px;
+    padding: 5px;
+  }
+  .detailsGrid{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(20%,150px));
+    padding-top: 20px;
+  }
+  .valueDiv{
+    clear:both;
+    padding: 0px;
+    margin-top: 6px;
+  }
+  .dataTables_info{
+    display:none;
+  }
+  #propertyLabel{
+    /* width: 100%; */
+    /* grid-column: 1;
+    grid-row: 1 / 3; */
+    padding-top: 0px;
+    align-self: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+    float: left;
+    /* height: 2em; */
+  }
+  .headerLabel{
+    float:left;
+    margin: 0px;
+  }
+  .propertyTable{
+    width: 98%!important;
+    margin-top: 20px!important;
+  }
+  .labeldiv{
+    width:100%;
+    margin-bottom: 1px!important;
+  }
+  h2{
+    padding-top: 0px;
+  }
+  #detailsGridWrap th, td, #propertyGrid th, #propertyGrid td{
+    text-align: left;
+  }
+  #folder_list_wrap{
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+    /* width: 80%!important;
+    margin: 0px;
+    float: left; */
+  }
+  /* #folder_table{
+    width: 80%!important;
+    margin: 0px;
+    float: left;
+  } */
+}
+
+
+#folder_table_wrapper{
+  overflow-x: auto;
+}
+#folder_table_wrapper table{
+  border-bottom: 0px Transparent solid;
+}
+
+#propertyLabel{
+  line-height: 30px;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+#clientSpan{
+  /* font-size: 80%; */
+  opacity: 0.9;
+  font-weight: normal;
+  position: relative;
+  /* left: 12px; */
+  top: -3px;
+  white-space: nowrap;
+}
+
+#detailSection table{
+  width: 98%!important;
+}
+
+#po_table, .inline_refs{
+  width: 100%!important;
+  margin: 0 auto;
+}
+#po_table{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px,2fr));
+  min-height: 50px;
+  padding-top: 10px;
+  padding: 5px;
+  height: 90%;
+  align-items: center;
+}
+#po_table .valueDiv{
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+#po_table .div1 label, .labeldiv{
+  font-weight: bold;
+  font-size: 80%;
+  /* opacity: 0.7; */
+  margin-bottom: 6px;
+}
+
+h3{
+  font-size: 130%!important;
+}
+
+.divmiddle{
+  clear: both;
+  margin: 0 auto;
+  vertical-align: middle;
+  align-content: center;
+  text-align:center;
+}
+.divmiddle .spacerbreaker{
+  margin: 0 auto;
+  width: 90%;
+}
+.divmiddle .valueDiv{
+  margin: 0 auto;
+}
+.divm .valueDiv, .divm .spacerbreaker{
+  margin: 0 auto;
+  text-align: center;
+}
+.divlast{
+  clear: both;
+  float: right;
+  /* vertical-align: middle; */
+  align-content: right;
+  text-align: right;
+}
+/* .divleft{
+  margin-right: 10px;
+}
+.divright{
+  margin-left: 10px;
+} */
+.valueDate{
+  margin-top: 5px;
+  /* display: none!important; */
+}
+
+#po_table th{
+  text-align: left;
+  padding-left:7px;
+}
+.inline_refs th, .inline_refs th{
+  border: 1px Transparent solid!important;
+  /* border-bottom: darkgrey solid 1px; */
+  border-radius: 1px;
+}
+table.dataTable thead th{
+  border: 1px Transparent solid!important;
+  /* border-top: 1px var(--bluetheme) solid!important; */
+}
+.inline_refs, .inline_refs{
+  /* border-bottom: var(--bluetheme) solid 1px; */
+  padding-bottom:-2px;
+}
+.inline_refs .unavail tr,.inline_refs .unavail tr{
+  pointer-events:none!important;
+}
+
+.propertyTable, .propertyTable1{
+  border-radius: 5px;
+  border: darkgrey 1px solid;
+  padding: 2px;
+  width: 90%;
+  margin: 0px auto;
+  margin-top: 5px;
+  background-color: #ffffff75;
+  /* float: right; */
+}
+#simplestatDIV{
+  grid-column: 1/4;
+}
+#simplestats{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(29%, 1fr));
+}
+.propertyTable .divright{
+  float: right;
+}
+.propertyTable .divleft{
+  float:left;
+}
+#po_table th{
+  font-size: 70%;
+  border: none;
+}
+.statusValue:not(.statusClass){
+  text-align: right!important;
+  left: -10px;
+}
+.valueDiv{
+  clear:both;
+  /* padding-top: 6px; */
+}
+.spacerbreaker{
+  clear: both;
+  height: 1px;
+  border-width: 0px;
+  padding: 0px;
+  /* float: left; */
+  width: 50%;
+  background-color: darkgrey;
+}
+
+#phaseLabelDiv, #phaseLabelDiv1{
+  height: 100%;
+  width: 95%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0 auto;
+  align-content: center;
+}
+
+
+.divstart, .divstart .spacerbreaker, .divstart label{
+  float: left;
+  text-align: left;
+}
+.divmiddle .labeldiv{
+  vertical-align: middle;
+  margin: 0 auto;
+}
+.labeldiv{
+  margin-bottom: 5px;
+}
+.divlast .spacerbreaker, .divlast label{
+  float: right;
+}
+
+
+
+
+/*
+  classes to cancel out or modify DataTables.css classes
+*/
+#propertyGrid th{
+  background-color: var(--highlightrgb_Dark);
+  padding: 5px;
+  margin:1px;
+  background-image: none;
+  text-transform: uppercase;
+  font-size: 90%;
+}
+#propertyGrid_wrapper{
+  grid-rows: 1/3;
+}
+#propertyGrid{
+  border-spacing: 2px!important;
+  border: 1px Transparent solid;
+}
+#detailsGridWrap{
+  padding-top:10px;
+
+}
+#propertyGrid td{
+  padding:3px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.inline_refs_wrapper .dataTables_scrollHead th{
+  /* padding: 8px!important;
+  padding-right: 0px!important;
+  padding-left: 0px!important; */
+  /* background-color: var(--highlightrgb_Dark); */
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  /* border: 0px solid var(--grey); */
+  /* text-align: left; */
+}
+.dataTables_scrollHeadInner thead th,
+.dataTables_scrollHeadInner thead td,
+  .inline_refs:not(#wo_table) thead th{
+  /* padding: 5px 18px!important; */
+  background-image: none!important;
+  border: 1px solid black;
+  padding-bottom:3px!important;
+  padding-top:6px!important;
+  /* box-shadow: 0px 1px 2px 0px var(--bluetheme); */
+}
+.inline_refs thead th{
+  box-shadow: 0px 1px 2px 0px var(--bluetheme);
+}
+.inline_refs .fillClass{
+  width: -webkit-fill-available;
+}
+#folderRefs{
+  text-align: left;
+}
+.dataTables_scrollBody{
+  /* border:1px solid var(--grey); */
+}

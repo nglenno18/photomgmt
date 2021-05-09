@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <title>Batch Upload Gallery</title>
+
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" type="text/css" href="css/login.css">
+      <!-- <link rel="stylesheet" type="text/css" href="css/thumbnails.css"> -->
+      <script src="js/libs/jquery.3.1.1.min.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="js/login/login.js"></script>
+      <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
+    </head>
+  <body onload="">
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+      function start() {
+        // Initializes the client with the API key and the Translate API.
+        gapi.client.init({
+          'apiKey': 'AIzaSyDTa4HfFcbELtnc18gy4vayH7c29h6pehM',
+          'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/drive/v2/rest'],
+        }).then(function() {
+				var batch = gapi.client.newBatch();
+
+          // Executes an API request, and returns a Promise.
+          // The method name `language.translations.list` comes from the API discovery.
+          function makeReq(fold){
+			   return gapi.client.drive.files.list({
+				q: '"'+ fold + '" in parents'
+			  });
+		  }
+			
+			var folders = ['1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', 
+			'1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s',
+			'1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s',
+			'1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s',
+			'1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s','1Hvs6MBjZ3PB94uu-wbqgtGzrxkK7C0A6', '1oqdnSlid72_mEM3BLKHeUMXhFqL5zT9s'];
+			var reqs = [];
+			folders.forEach((fo, i)=>{
+				console.log('Create request for folder : ', fo);
+				var newReq = makeReq(fo);
+				reqs.push(newReq);
+				if(i<20)batch.add(newReq);
+			});
+			
+
+		  console.log('\n\nBATCH(', batch, ')');
+		  console.log('Execute the Batch Requests\n\n');
+		  batch.execute(function(batchresp){
+				console.log('batchresponse : ', batchresp);
+		  });
+        }).then(function(response) {
+			console.log(response);
+          <!-- console.log(response.result.data.translations[0].translatedText); -->
+        }, function(reason) {
+          console.log('Error: ' + reason.result.error.message);
+        });
+      };
+
+      // Loads the JavaScript client library and invokes `start` afterwards.
+      gapi.load('client', start);
+    </script>
+
+  </body>
+</html>

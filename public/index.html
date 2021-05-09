@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html><head>
+    <title>Upload Center</title>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <script src="js/libs/jquery.3.1.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/libs/delivery.js"></script>
+    <script src="js/libs/filesaver.js"/>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
+    <script src="js/utilities.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/imageHandles.js"></script>
+    <!-- <script src="/js/libs/bootstrap.min.js"></script> -->
+</head>
+<body onload="initListen()" style="display:none;">
+  <h1 id="headerLabel" onclick="window.location.href='/'">Feratech Replacement    </h1>
+  <p id="instruction"><sup>Click a box, launch a file dialog, select a photo, add description</sup></p>
+
+  <div class="container1">
+    <a class="box1" id="imageC" style="margin:10px;" title="Upload a photo">
+      <img class="img" src="images/fileImage.png" align="center" width="270px" height="270px" object-fit="contain"style="border:grey 1px solid; padding-right:10px"></img>
+    </a>
+    <input class="fd1" id="singlefd1" type="file" accept=".png,.jpg,.JPG,.PNG" multiple/>
+    <p class="fileID" color="#CCCCCC"></p>
+    <input id="filename" type="textarea" float="left" title="Add a photo description" placeholder="File Name" style="width:195px"></input>
+  </div>
+
+  <div class="buttonPanel">
+    <button class="test" id="batchTest" style="width:200px; margin-top:10px; margin-bottom:5px">Batch Image Test</button></br>
+    <button class="test" id="batchTest_Template" style="width:200px; margin-top:10px; margin-bottom:5px">Batch Upload Page</button></br>
+  </br>
+    <button class="test" id="dbTest" style="width:200px; margin-top:10px; margin-bottom:5px">Database Test</button></br>
+    <button class="test" id="gdriveTest" style="width:200px; margin-top:10px; margin-bottom:5px">GDrive Test   </button></br>
+    <button class="test" id="allProp" style="width:200px; margin-top:10px; margin-bottom:5px">All Properties   </button></br>
+    <button class="test" id="myProp" style="width:200px; margin-top:10px; margin-bottom:5px;">My Properties   </button></br>
+    <button class="test" id="layouts" style="width:200px; margin-top:10px; margin-bottom:5px;">Layouts   </button></br>
+    <button class="test" id="propertyPage" style="width:200px; margin-top:10px; margin-bottom:5px;">propertyPage   </button></br>
+  </div>
+<body>
+    <script>
+
+
+	  function initListen(){
+	  console.log('initialize')
+        return window.location.href = '/propertySearch';
+	  }
+      document.getElementById('allProp').addEventListener('click', function(e){
+        window.location.href = '/properties';
+      });
+      document.getElementById('myProp').addEventListener('click', function(e){
+        window.location.href = '/myProperties';
+      });
+      document.getElementById('layouts').addEventListener('click', function(e){
+        return window.location.href = '/propertyLayout';
+      });
+
+
+    </script>
+
+<footer>
+</footer>
+
+</html>

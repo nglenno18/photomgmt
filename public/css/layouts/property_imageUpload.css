@@ -1,0 +1,380 @@
+body{
+	margin: 20px;
+	padding: 10px;
+	display: inline-block;
+	width: 95%;
+}
+
+#property_section{
+	float: left;
+  /* width: auto; */
+}
+
+:root{
+  --sq_length: 335px;
+  --gallery_margin_factor: 2px;
+  --minwidth: 750px;
+  --standard_buttonHT: 40px;
+  --thumbnail_length: 80px;
+  --dragHeight: 8px;
+}
+
+.testButton{
+  float: right;
+  width: var(--standard_buttonHT);
+  position: relative;
+  top: calc(0px - var(--standard_buttonHT) - var(--standard_Padding));
+}
+
+.thumbWrap{
+  display: table;
+  overflow-x: none;
+  width: 100%;
+  height: auto;
+  border: var(--standard_border);
+}
+
+.thumbnail{
+  clear: both;
+  display: inline-table;
+  /* min-width: 80px; */
+  width: var(--thumbnail_length);
+  max-height: var(--thumbnail_length);
+  background-color: lightblue;
+  margin: 3px;
+  height: auto;
+}
+
+button.tab{
+  height: var(--standard_tabHT);
+  position: relative;
+  top: calc(var(--standard_tabHT) - var(--standard_Padding)*2);
+  /* padding: 3px; */
+}
+
+@media (min-width:750px){
+  :root{
+    --minimum_box_hi: 150px;
+    --leftside_percentage: 46%;
+    --h2_height: 20px;
+    --standard_border: 1px grey solid;
+    --standard_boxShadow: 3px 3px 5px grey;
+    --outermargin: 7px;
+    --shadow_fadeRight: 2px 2px 1px #888;
+    --shadow_fadeLeft: 1px 2px 2px #888;
+    --photo_section_background: lightgrey;
+  }
+  .view_photo_page{
+    width: calc(100% - var(--outermargin) - var(--outermargin));
+    margin-left: var(--outermargin);
+    margin-right: var(--outermargin);
+    position: relative;
+    top: calc(0px - 22px + var(--outermargin));
+  }
+  .topsection{
+    padding: var(--standard_Padding);
+    /* min-height: calc(var(--minwidth) / 2); */
+    /* height: 500px; */
+    border-radius: 2px;
+    margin-left: var(--outermargin);
+    margin-right: var(--outermargin);
+    margin-top: var(--outermargin);
+    margin-bottom: 0px;
+  }
+  .rightside{
+    float: right;
+    background-color: var(--photo_section_background);
+    width: var(--rightside_percentage);
+    box-shadow: var(--standard_boxShadow);
+  }
+  .leftside{
+    float: left;
+    background-color: lightgrey;
+    width: var(--leftside_percentage);
+    box-shadow: var(--shadow_fadeLeft);
+  }
+  #photoButtons{
+    width: 50%;
+  }
+}
+  /* screen width small -> top sections are full-width */
+@media (max-width:750px){
+  :root{
+    --minimum_box_hi: 150px;
+    --leftside_percentage: 45%;
+    --h2_height: 20px;
+    --standard_border: 1px grey solid;
+    --standard_boxShadow: 0px 2px 4px grey;
+    --outermargin: 7px;
+    --shadow_fadeRight: 0px 2px 3px #888;
+    --shadow_fadeDown: 0px 2px 4px #888;
+    --photo_section_background: lightgrey;
+  }
+
+  .view_photo_page{
+    width: calc(100% - var(--outermargin) - 1px);
+    margin-left: var(--outermargin);
+    margin-right: 1px;
+    top: calc(0px - 14px);
+  }
+  .topsection{
+    clear: both;
+    padding: var(--standard_Padding);
+    border-radius: 2px;
+    min-height: var(--sq_length);
+    min-width: 95%;
+    width: calc(100% - var(--outermargin) - var(--outermargin));
+    vertical-align: middle;
+    margin-left: var(--outermargin);
+    margin-right: var(--outermargin);
+    margin-top: var(--outermargin);
+    margin-bottom: 0px;
+    box-shadow: var(--shadow_fadeDown);
+    z-index: 100;
+  }
+  .rightside{
+    background-color: lightgrey;
+  }
+  .leftside{
+    background-color: lightgrey;
+  }
+  #photoButtons{
+    width: 50%;
+  }
+}
+  
+.thumbnail img{
+  display: flex;
+  flex-direction: column;
+  justify-content: middle;
+  vertical-align: middle;
+  width: 90%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.spacer{
+  clear: both;
+  display: inline-block;
+  width: var(--gallery_margin_factor);
+}
+.dragBar{
+  clear: both;
+  width: 100%;
+  height: var(--dragHeight);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  cursor: row-resize;
+  text-align: center;
+  font-size: 10px;
+}
+.dragBar:hover{
+  background-color: white;
+  opacity: .5;
+}
+
+#dropdown_gallery{
+  clear: both;
+  display: inline-table;
+}
+#dropdown_gallery.fixed{
+  /* display: table; */
+  overflow: auto;
+}
+#dropdown_gallery:not(.fixed){
+  height: calc(var(--thumbnail_length) + var(--gallery_margin_factor)*4);
+}
+#dragBuffer{
+  clear: both;
+  background-color: Transparent;
+  margin-bottom: 30px;
+}
+
+/*
+  #photoPreviewDiv must be display type "table":
+    Otherwise, the "overflow" property does not auto-adjust the div's Height
+    w/ the height of the image inside it.
+    - [display:table, overflow:auto] --> auto adjust height
+    - [display:flex, overflow:auto, ] --> ignores bottom content, but can vertically align
+
+  Place a new div inside #photoPreviewDiv that will hold the image
+    ??
+*/
+#photoPreviewContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+#photoPreviewDiv{
+  width: 100%;
+  display: table;
+  overflow: auto;
+  height: var(--sq_length);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.preview{
+  vertical-align: middle;
+  min-width: calc(var(--sq_length) - var(--standard_Padding)*6);
+}
+
+/*
+  absolute center the image
+*/
+#photoPreviewDiv img{
+  width: 99%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.clear{
+  clear: both;
+}
+
+#page_wrapper{
+	width: 95%;
+	margin: 1px;
+}
+.wrapper{
+  border: 1px;
+  width: 100%;
+}
+.buttonPanel{
+  display:inline-block;
+  height:auto;
+  margin: 0 auto;
+  padding: 0px;
+}
+#photoButtons{
+  border: 0px;
+  margin-left: 3px;
+  box-shadow: 0px 0px 0px Transparent;
+  min-width: 100px;
+  /* max-width: 110px; */
+  float: left;
+  margin-top: 2px;
+  position: relative;
+  /* top: calc(var(--standard_buttonHT) - (var(--imageButtonPx) * 2)); */
+  /* top: calc(var(--imageButton) - var(--gallery_margin_factor)); */
+  justify-content: space-between;
+}
+.photoButtons{
+  background-color: Transparent;
+  border: 0px;
+  box-shadow: 0px 0px 0px Transparent;
+  display: table-cell;
+  overflow: fill;
+  /* height: var(--sq_length); */
+  margin:0px;
+  padding: 0px;
+  /* margin-top: 2px; */
+  width: var(--imageButtonLength);
+  height: var(--imageButtonLength);
+  max-height: var(--standard_buttonHT);
+  max-width: var(--standard_buttonHT);
+  min-height: calc(var(--standard_buttonHT));
+  cursor: pointer;
+}
+
+.photoButtons img{
+  /* border: var(--standard_border); */
+  padding: 1px;
+  margin: 0px;
+  align-self: center;
+  /* padding-top: 2%; */
+  width:100%;
+  max-height: inherit;
+  max-width: inherit;
+}
+
+.invisible{
+  background-color: Transparent;
+  border-color: Transparent;
+}
+.breakbar{
+  /* position: relative;
+  top:100px; */
+  clear: both;
+  float: right;
+  display: inline-block;
+  min-width: 100%;
+  min-height: 0px;
+  /* background-color: Transparent; */
+  background-color: lightblue;
+  margin: 0px;
+  padding: 0px;
+  z-index: 1;
+  /* border: var(--standard_border); */
+}
+
+#gallery_menu{
+  display: table;
+  /* border: var(--standard_border); */
+  padding: 2px;
+  padding-right: 5px;
+  margin-top: 5px;
+  min-width: 150px;
+  width: 20%;
+  position: relative;
+  /* top: calc(100% - 200px); */
+  float: right;
+  display: flex;
+  justify-content: space-between;
+  z-index: 90;
+}
+
+.gallery_tab{
+  display: table-cell;
+  text-align: center;
+  width: 100%;
+}
+
+#photo_section{
+  padding: var(--standard_Padding);
+  padding-top: 0px;
+  display: table;
+}
+#photo_section h2{
+  /* margin-top: 0px; */
+}
+
+#gallery_container{
+  float: right;
+  position: relative;
+  top: calc(var(--outermargin)*-1);
+  /* bring the container width to the edge of the Proeprty section to the end of the button panel */
+  height: auto;
+  background-color: var(--photo_section_background);
+  margin-top: 0px;
+  border-top: 0px;
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+  box-shadow: var(--standard_boxShadow);
+  z-index: 80;
+}
+#dropdown_gallery{
+  float: right;
+  position: relative;
+  /* top: calc(var(--outermargin)*-1); */
+  /* bring the container width to the edge of the Proeprty section to the end of the button panel */
+  width: calc(100% - var(--outermargin)*2 + var(--gallery_margin_factor)*2);
+  height: 200px;
+  background-color: #cccccc;
+  margin-top: 0px;
+  margin-right: calc(var(--outermargin) - 2px);
+  margin-left: calc(var(--outermargin) - 1px);
+  margin-bottom: 5px;
+  border: var(--standard_border);
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+  box-shadow: 3px 3px 5px grey inset;
+  /* display: table; */
+  overflow: hidden;
+}

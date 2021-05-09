@@ -1,0 +1,12 @@
+.select2-container--popout-select .select2-dropdown .select2-results
+.select2-results__option[aria-current="true"]
+/* ,.select2-results__option[title="lxrz5"] */
+,.select2-results__option[title="placeholderlabel"]
+{
+  border-left: 2px solid var(--brand_theme);
+  color: var(--brand_theme);
+  background: rgba(121, 123, 128, .25);
+  font-weight: bold;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}

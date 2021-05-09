@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <title>User Properties</title>
+
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" type="text/css" href="css/layouts/propertyLayout.css">
+      <link rel="stylesheet" type="text/css" href="css/layouts/rootCSS.css">
+      <link rel="stylesheet" type="text/css" href="css/layouts/detailExpansions.css">
+      <script src="js/libs/jquery.3.1.1.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script> -->
+    </head>
+  <body onload="initializeListeners()">
+    <a name="top"></a>
+<div id="page_wrapper">
+<!-- -------------------------------------------------------------------------------->
+    <div id="property_section" class="centered">
+      <div class="section_break"></div>
+      <button id="addToList" style="display:none;">add to list</button>
+    <button id="homePage">Home</button>
+    <button id="myProperties">My Properties</button>
+    <button id="logout">Logout</button>
+
+		<div id="searchBarContainer">
+					<img src=".././images/search_icon.png"><img>
+			<input type="text" id="searchbar"></input>
+		</div>
+      <div class="section_break" style="clear:both"></div>
+		<div class="clear"></div>
+		<div id="property_dropdownContainer" class="">
+		</div>
+
+      <div class="property_results">
+        <div class="property_item">
+        </div>
+      </div>
+
+      <div class="section_break"></div>
+
+    </div>
+</div>
+    <script src="/socket.io/socket.io.js"></script>
+	<!-- <script src="js/layouts/property_rows.js"></script> -->
+  <script src="js/layouts/popups.js"></script>
+  <script src="js/layouts/propertyPage.js"></script>
+
+  </body>
+
+    <script>
+    initializeListeners = function(e){
+      console.log('Property Page Initialized...');
+      var addToList = document.getElementById('addToList');
+      console.log('\n\nSearchBar Initialized...');
+		    initializeSearchBar(e);
+      console.log('\n\nSearchBar Initialized...');
+      // vertically align the values to the keys that are multi-line:
+      <!-- alignDetails(); -->
+      console.log('\n\nSearchBar Initialized...');
+
+    };
+    </script>
+</html>

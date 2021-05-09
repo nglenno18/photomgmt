@@ -1,0 +1,284 @@
+/*
+  inline elements do not have height.
+  inline-block elements do have height.
+*/
+:root{
+  --sq_length: 200px;
+  --gallery_margin_factor: 2px;
+  --minwidth: 900px;
+  --standard_buttonHT: 30px;
+  --standard_tabHT: 20px;
+  --standard_Padding: 3px;
+  --imageButtonLength: 8%;
+  --imageButtonPx: 8px;
+  --rightside_percentage: 30%;
+  --topside_height : 500px;
+  --topside_detail_height: 200px;
+}
+
+h2{
+  height: var(--h2_height);
+}
+body {
+  background-color:#f0f0f2;
+  margin:0 auto;
+  padding:0;
+  font-family:"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 1%;
+  min-width: var(--sq_length);
+  max-width: 2000px;
+  /* overflow: hidden; */
+  padding-left: var(--outermargin);
+  padding-right: var(--outermargin);
+  padding-bottom: 300px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  box-shadow: 1px 1px 1px var(--grey);
+  border-radius: 5px;
+}
+.standard_border{
+  border: var(--standard_border);
+}
+button.tab{
+  height: var(--standard_tabHT);
+  position: relative;
+  top: calc(var(--standard_tabHT) - var(--standard_Padding)*2);
+  /* padding: 3px; */
+}
+button:not(.tab){
+  height: var(--standard_buttonHT);
+  /* padding: 3px; */
+}
+button:disabled {
+  background-color: var(--lightgrey);
+  border-width: 1px;
+  /* padding-right: 4px; */
+  box-shadow: 1px 2px 2px var(--grey) inset;
+}
+@media (min-width:750px){
+  :root{
+    --minimum_box_hi: 150px;
+    --leftside_percentage: 46%;
+    --h2_height: 20px;
+    --standard_border: 1px var(--grey) solid;
+    --standard_boxShadow: 3px 3px 5px var(--grey);
+    --outermargin: 7px;
+    --shadow_fadeRight: 2px 2px 1px #888;
+    --shadow_fadeLeft: 1px 2px 2px #888;
+    --photo_section_background: var(--lightgrey);
+  }
+  .view_photo_page{
+    width: calc(100% - var(--outermargin) - var(--outermargin));
+    margin-left: var(--outermargin);
+    margin-right: var(--outermargin);
+    position: relative;
+    top: calc(0px - 22px + var(--outermargin));
+  }
+  .topsection{
+    padding: var(--standard_Padding);
+    /* min-height: calc(var(--minwidth) / 2); */
+    /* height: 500px; */
+    border-radius: 2px;
+    margin-left: var(--outermargin);
+    margin-right: var(--outermargin);
+    margin-top: var(--outermargin);
+    margin-bottom: 0px;
+  }
+  .rightside{
+    float: right;
+    background-color: var(--photo_section_background);
+    width: var(--rightside_percentage);
+    box-shadow: var(--standard_boxShadow);
+  }
+  .leftside{
+    float: left;
+    background-color: var(--lightgrey);
+    width: var(--leftside_percentage);
+    box-shadow: var(--shadow_fadeLeft);
+  }
+  #photoButtons{
+    width: 50%;
+  }
+}
+  /* screen width small -> top sections are full-width */
+@media (max-width:750px){
+  :root{
+    --minimum_box_hi: 150px;
+    --leftside_percentage: 45%;
+    --h2_height: 20px;
+    --standard_border: 1px var(--grey) solid;
+    --standard_boxShadow: 0px 2px 4px var(--grey);
+    --outermargin: 7px;
+    --shadow_fadeRight: 0px 2px 3px #888;
+    --shadow_fadeDown: 0px 2px 4px #888;
+    --photo_section_background: var(--lightgrey);
+  }
+
+  .view_photo_page{
+    width: calc(100% - var(--outermargin) - 1px);
+    margin-left: var(--outermargin);
+    margin-right: 1px;
+    top: calc(0px - 14px);
+  }
+  .topsection{
+    clear: both;
+    padding: var(--standard_Padding);
+    border-radius: 2px;
+    min-height: var(--sq_length);
+    min-width: 95%;
+    width: calc(100% - var(--outermargin) - var(--outermargin));
+    vertical-align: middle;
+    margin-left: var(--outermargin);
+    margin-right: var(--outermargin);
+    margin-top: var(--outermargin);
+    margin-bottom: 0px;
+    box-shadow: var(--shadow_fadeDown);
+    z-index: 100;
+  }
+  .rightside{
+    background-color: var(--lightgrey);
+  }
+  .leftside{
+    background-color: var(--lightgrey);
+  }
+  #photoButtons{
+    width: 50%;
+  }
+}
+
+.invisible{
+  background-color: Transparent;
+  border-color: Transparent;
+}
+.breakbar{
+  /* position: relative;
+  top:100px; */
+  clear: both;
+  float: right;
+  display: inline-block;
+  min-width: 100%;
+  min-height: 0px;
+  /* background-color: Transparent; */
+  background-color: lightblue;
+  margin: 0px;
+  padding: 0px;
+  z-index: 1;
+  /* border: var(--standard_border); */
+}
+
+#gallery_menu{
+  display: table;
+  /* border: var(--standard_border); */
+  padding: 2px;
+  padding-right: 5px;
+  margin-top: 5px;
+  min-width: 150px;
+  width: 20%;
+  position: relative;
+  /* top: calc(100% - 200px); */
+  float: right;
+  display: flex;
+  justify-content: space-between;
+  z-index: 90;
+}
+
+.gallery_tab{
+  display: table-cell;
+  text-align: center;
+  width: 100%;
+}
+
+#photo_section{
+  padding: var(--standard_Padding);
+  padding-top: 0px;
+  display: table;
+}
+#photo_section h2{
+  /* margin-top: 0px; */
+}
+
+#gallery_container{
+  float: right;
+  position: relative;
+  top: calc(var(--outermargin)*-1);
+  /* bring the container width to the edge of the Proeprty section to the end of the button panel */
+  height: auto;
+  background-color: var(--photo_section_background);
+  margin-top: 0px;
+  border-top: 0px;
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+  box-shadow: var(--standard_boxShadow);
+}
+#dropdown_gallery{
+  float: right;
+  position: relative;
+  /* top: calc(var(--outermargin)*-1); */
+  /* bring the container width to the edge of the Proeprty section to the end of the button panel */
+  width: calc(100% - var(--outermargin)*2 + var(--gallery_margin_factor)*2);
+  height: 200px;
+  background-color: #cccccc;
+  margin-top: 0px;
+  margin-right: calc(var(--outermargin) - 2px);
+  margin-left: calc(var(--outermargin) - 1px);
+  margin-bottom: 5px;
+  border: var(--standard_border);
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+  box-shadow: 3px 3px 5px var(--grey) inset;
+  /* display: table; */
+  overflow: hidden;
+}
+
+.wrapper{
+  border: 1px;
+  width: 100%;
+}
+.buttonPanel{
+  display:inline-block;
+  height:auto;
+  margin: 0 auto;
+  padding: 0px;
+}
+#photoButtons{
+  border: 0px;
+  margin-left: 3px;
+  box-shadow: 0px 0px 0px Transparent;
+  min-width: 100px;
+  /* max-width: 110px; */
+  float: left;
+  margin-top: 2px;
+  position: relative;
+  /* top: calc(var(--standard_buttonHT) - (var(--imageButtonPx) * 2)); */
+  /* top: calc(var(--imageButton) - var(--gallery_margin_factor)); */
+  justify-content: space-between;
+}
+.photoButtons{
+  background-color: Transparent;
+  border: 0px;
+  box-shadow: 0px 0px 0px Transparent;
+  display: table-cell;
+  overflow: fill;
+  /* height: var(--sq_length); */
+  margin:0px;
+  padding: 0px;
+  /* margin-top: 2px; */
+  width: var(--imageButtonLength);
+  height: var(--imageButtonLength);
+  max-height: var(--standard_buttonHT);
+  max-width: var(--standard_buttonHT);
+  min-height: calc(var(--standard_buttonHT));
+  cursor: pointer;
+}
+
+.photoButtons img{
+  /* border: var(--standard_border); */
+  padding: 1px;
+  margin: 0px;
+  align-self: center;
+  /* padding-top: 2%; */
+  width:100%;
+  max-height: inherit;
+  max-width: inherit;
+}

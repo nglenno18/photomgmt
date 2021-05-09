@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <title>Error Occured</title>
+
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link href="../.././branding/cstr-ico.ico" rel="icon" type="image/x-icon" />
+      <script src="../.././js/libs/jquery.3.1.1.min.js"></script>
+      <style type="text/css" src="../.././branding/constructive.css"></style>
+      <style type="text/css" src="../.././css/layouts/loginalerts.css"></style>
+
+      <!-- <script src="/js/libs/bootstrap.min.js"></script> -->
+  </head>
+
+  <STYLE type="text/css">
+      /* FORM FILLOUT PANE (HIDEINITIAL) */
+
+          h3{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-left: 5px;
+          }
+
+          input[type="text"]{
+            padding: 8px;
+            border-radius: 3px;
+            padding-top: 12px;
+            padding-bottom: 5px;
+            padding-right: 25px;
+            margin-bottom: 0px;
+            margin-top: 10px;
+            border: 1px lightgrey solid;
+            width: calc(100% - 35px);
+            font-size: 18px;
+            outline-color: Transparent;
+          }
+          input[type="text"]:focus{
+            border-color: grey;
+          }
+          label{
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            margin-left: 1px;
+            font-size: 15px;
+          }
+          .descriptionClass{
+            clear: both;
+            text-align: right;
+            /* color: grey; */
+            /* padding-top: 5px; */
+            /* box-shadow: var(--shadow_template) grey; */
+            padding-left: 5px;
+            padding-right: 5px;
+            border-radius: 2px;
+            margin-top: 0px;
+            position: relative;
+            top: -10px;
+          }
+
+      /* fixed setup ------------------------------------------------*/
+      :root{
+        --mh: 200px;
+        --wh: #dadada;
+        /* --themeColor: rgb(107, 206, 229); */
+        --themeR: 250;
+        --themeG: 250;
+        --themeB: 250;
+        --themeColor: rgba(0,0,0,0.5);
+        --themeShadow: 0px 0px 20px rgba(0,0,0,0.8) inset;
+        --shadow_left: 2px 1px 1px;
+        --shadow_right: 2px 2px 2px;
+        --highlightColor: white;
+      }
+      .hidedisable{
+        position: absolute;
+        display:none;
+      }
+      img{
+        object-fit: scale-down;
+        max-height: 300px;
+      }
+      .logo-wrapper img{
+        width:100%;
+      }
+      label img{
+        max-height: 28px;
+        max-width: 28px;
+        opacity: .8;
+        position: relative;
+        top: 5px;
+        margin-right: 5px;
+      }
+      .infoimg{
+        max-height: 17px;
+        max-width: 17px;
+        opacity: .8;
+        position: relative;
+        top: -22px;
+        margin-right: 7px;
+        float:right!important;
+      }
+      .infoimg:hover{
+        opacity: 0.5;
+        cursor: pointer;
+      }
+      .spacer{
+        /* height: 20px; */
+        /* margin: 0px; */
+      }
+      p, .spacer{
+        margin: 0px;
+      }
+      #main_container{
+        display: table;
+        margin: 0 auto;
+        min-width: 320px;
+        max-width: 800px;
+        width: 90%;
+        /* min-height: 200px; */
+        border: 1px solid Transparent;
+        padding-bottom: 10px;
+      }
+      .basecolor{
+        display:table;
+        max-width: 800px;
+        width: 100%;
+        background-color: var(-wh);
+      }
+      #form_click, #request_click, #backBTN{
+        background-color: Transparent;
+        background-color: white;
+
+        border: 1px lightgrey solid;
+        margin: 5px;
+        margin-right: 5px;
+        margin-top: 18px;
+        border-radius: 3px;
+        box-shadow: var(--shadow_left) lightgrey;
+        outline-color: Transparent;
+        height: 35px;
+      }
+      #form_click, #request_click, #backBTN{
+        float: right;
+      }
+      #form_click:hover, #request_click:hover, #backBTN:hover{
+        /* background-color: rgba(var(--themeR), var(--themeG), var(--themeB), 0.75); */
+        box-shadow: var(--shadow_left) grey;
+        border-color:Transparent;
+        cursor: pointer;
+      }
+      #form_click:active, #request_click:active, #backBTN:active{
+        background-color: rgba(var(--themeR), var(--themeG), var(--themeB), 0.5);
+        cursor: pointer;
+        border-color: lightgrey;
+        box-shadow: 2px 1px 4px grey inset;
+      }
+      #form_click, #backBTN{
+        width: 90px;
+        margin-right:2px;
+        /* position: relative;
+        left: 25px; */
+      }
+      #request_click{
+        /* width: 70px; */
+        background-color: white;
+        margin-bottom: 15px;
+        margin-top: 0px;
+        margin-right: 25px;
+        margin-bottom: 5px;
+      }
+      #form_click{
+        clear: both;
+        width: 90px;
+        margin-right: 0px;
+      }
+      /* END FIXED SETUP ------------------------------------------------*/
+
+
+
+      .bi-wrapper{
+        padding-left: 0px;
+        background-color: var(-wh);
+      }
+      .popup{
+        padding: 10px;
+        background-color: var(--wh);
+        box-shadow: 0px 10px 20px black, -0px 0px 2px 2px white inset;
+        border-radius: 5px;
+        border: 2px solid grey;
+      }
+      .form_container{
+        grid-column: 2;
+      }
+
+      /* VERTICALLY CENTER AN IMAGE! */
+      .center_vert{
+        margin: 1em 0;
+        position: relative;
+      }
+      .center_vert img{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+
+
+      body{
+        width: calc(100% - 18px);
+        height: -webkit-fill-available;
+        margin: 2px auto;
+        background-color: var(--themeColor);
+        box-shadow: var(--themeShadow);
+      }
+
+      .headerbar{
+        position: relative;
+      }
+      #main_container:not(.form_pane) .headerbar{
+        top: 80px;
+        height: 70px;
+      }
+      #main_container.form_pane .headerbar{
+        position: relative;
+        /* top: 120px; */
+        height: 70px;
+      }
+      .header1{
+        font-size: 150%;
+        text-transform: uppercase;
+        padding-bottom: 2px;
+        margin-bottom: 0px;
+      }
+      .header2{
+        clear: both;
+        text-align: center;
+        font-size: 140%;
+      }
+
+      #main_container{
+        font-family: "Georgia,Times,Times New Roman,serif"!important;
+      }
+
+      .indent_par{
+        padding-left: 20px;
+      }
+
+      .form_field{}
+
+
+/* THEMING */
+    @media (max-width: 820px) {
+      .bufferbreaker{
+        height: 70px;
+      }
+      #contact_par{
+        position: relative;
+        /* left: -15%; */
+        margin-left: 0px;
+        width: calc(100% - 20px);
+      }
+      #request_click, #form_click, #backBTN{
+        position: relative;
+        top: -10px;
+        margin-right: 10px;
+        margin-bottom: 5px;
+      }
+      .center_vert img{
+        display: block;
+        /* left: calc(-100% + 55px); */
+        min-height: 50px;
+        min-width: 50px;
+        max-height: 150px;
+        max-width: 150px;
+        height: 5%;
+        width: auto;
+        top:-80px;
+      }
+      .headerbar{
+        padding-top: 100px;
+      }
+      #main_container.form_pane .headerbar{
+        top: 130px!important;
+      }
+      .popup{
+        padding-bottom: 40px;
+      }
+      .nobottom{
+        /* padding-bottom: 0px!important; */
+      }
+      .indent_par, #contact_par{
+        /* padding-left: 30px; */
+      }
+
+      body{
+        /* display:table; */
+        padding-top: calc(0px);
+      }
+      .header2{
+        font-size: 120%;
+        text-align: center;
+        /* width: 100% - 80px); */
+      }
+      .header1{
+        font-size: 130%;
+        text-align: center;
+      }
+
+      #main_container:not(.form_pane) .headerbar{
+        width: 85%;
+        /* margin-left:60px; */
+        margin: 0 auto;
+        top: 130px!important;
+      }
+
+      #main_container:not(.form_pane) .header1{
+        padding-top: 10px;
+      }
+      #main_container .spacer{
+        height: 20px;
+        /* margin: 0px; */
+      }
+      .bi-wrapper{
+        padding-top: 50px
+      }
+    }
+
+    @media (min-width: 820px){
+      #contact_par{
+        position: relative;
+        width: 100%;
+      }
+      .nobottom{
+        padding-bottom: 50px;
+      }
+      #main_container:not(.form_pane) .bi-wrapper{
+        display: grid;
+        grid-template-columns: minmax(80px, 20%) minmax(300px, 80%);
+      }
+      #main_container.form_pane .center_vert img {
+          left: calc(-100% + 140px);
+          min-height: 50px;
+          min-width: 50px;
+          top: 40px;
+      }
+      #request_click{
+        position: relative;
+        top: -40px;
+        margin-right: 10px;
+      }
+      #main_container.form_pane .headerbar {
+          position: relative;
+          /* top: 120px; */
+          top: 100px;
+          margin-left: 10px;
+          height: 70px;
+      }
+      #main_container:not(.form_pane) .header1{
+        width: 90%;
+        float:right;
+        text-align: center;
+      }
+      #main_container.form_pane .header1{
+        /* width: 90%; */
+        /* float:right; */
+        text-align: center;
+      }
+      #main_container:not(.form_pane) .header2{
+        padding-left: 50px
+      }
+      .header2{
+        width: 100%;
+        text-align: center;
+        height: 30px;
+      }
+      body{
+        padding-top: calc(70px);
+      }
+      .bufferbreaker{
+        height: 70px;
+      }
+      #form_request_container{
+        margin-top: 10px!important;
+      }
+      #main_container.form_pane .spacer{
+        height: 20px;
+        /* margin: 0px; */
+      }
+    }
+    @media (max-width: 500px){
+      .bi-wrapper{
+        display: block;
+      }
+      .bufferbreaker{
+        height: 80px;
+      }
+      .bi-wrapper img:not(.infoimg, .field_icon){
+        /* display:none; */
+        /* display: none; */
+        left: calc(-100% + 55px);
+        min-height: 50px;
+        min-width: 50px;
+        top: -35px;
+      }
+      .popup{
+        padding-bottom: 40px!important;
+      }
+      #form_request_container{
+        margin-top: 25px!important;
+      }
+      #main_container:not(.form_pane) .headerbar{
+        top: 95px;
+      }
+      p{
+        padding-left: 2px!important;
+        text-align: center;
+      }
+      .error_detail{
+        margin-top: 35px!important;
+        padding: 8px;
+        background-color: rgba(255,255,255,0.9);
+        border-radius: 5px;
+      }
+      .descriptionClass{
+        top: 0px;
+      }
+      #main_container:not(.form_pane) .header1{
+        width: calc(100% - 70px);
+        /* margin-left: 65px; */
+        margin:  0 auto;
+        padding-top: 0px;
+        margin-top: 20px;
+      }
+      #main_container:not(.form_pane) .headerbar{
+        width: 100%!important;
+        margin-left: 2px!important;
+      }
+      #main_container:not(.form_pane) .header2{
+        width: 99%!important;
+        margin: 0 auto !important;
+      }
+    }
+
+  </STYLE>
+
+
+  <script src="../.././js/layouts/loginrouting.js"></script>
+
+  <body onload="initializePopup(this)">
+
+    <div class="hidedisable emailID" id="emailIDTAG"></div>
+      <div class="hidedisable firstName" id="firstNameID"></div>
+        <div class="lastName" id="lastNameID"></div>
+
+        <iframe name="hiddenFrame" style="display:none; position: absolute;">
+        </iframe>
+
+    <div id="main_container">
+      <div class="headerbar">
+        <h2 class="header1">   An Error Occured While Logging In</h2>
+        <p class="header2">
+          The email did not match any Constructive Accounts
+        </p>
+      </div>
+
+      <div class="popup">
+        <div class="bi-wrapper"> <!-- WRAPPER SPLITS into simple 2-column grid -->
+          <div class="center_vert">
+            <!-- <img src="../.././images/ARC_LOGO.png"></img> -->
+            <img src="../.././branding/brand.png"></img>
+          </div>
+          <div class="form_container">
+            <!-- <div class="headerbar">
+              <h2 class="header1">   An Error Occured While Logging In</h2>
+              <p class="header2">
+                The login email did not match any ARCVM Accounts
+              </p>
+            </div> -->
+            <div class="bufferbreaker" style = ""></div>
+
+
+            <div class="error_detail" style="width: 95%; margin:20px auto;">
+              <p id="emailUsed_par" class="indent_par">
+                <span style="text-transform:uppercase; padding-left: 0px;">Email Used:</span>
+                <span style="font-weight: bold; font-size: 120%;">"sampleEmail@email.com".</span> </br>
+                <span style="padding-left: 0px;">This account does <span style="font-weight: bold">not</span>
+                have access to Constructive Photos.
+              </p>
+            </br>
+
+              <p id="contact_par" class="indent_par">
+                To report issues of for additional assistance, please contact Constructive Renovations at <span style="font-weight: bold;">(630) 914 5786</a></span> or submit a request.
+              </p>            </br>
+
+
+            </div>
+
+            <div id="form_request_container" class="hidedisable form_container" style="width: 95%; margin:25px auto;">
+                <form action="/access/request/" method="post" id="form_submit" target="hiddenFrame">
+                  <div id="email_div" class="form_field">
+                    <label for="email_field">
+                      <img class="field_icon" src="../.././images/emailicon.png"></img>Enter Email: </label>
+                    <input id="email_field" type="text" name="email_field"></input>
+                    <img class="infoimg" id="info_email" title="Email Field Description" src="../.././images/info.png"></img>
+                      <p id="description_email" class="descriptionClass hidedisable">
+                        <!-- Email Address will be added to our directory once this request is approved. -->
+                        Email Address is prefilled with the information from the google account that was authenticated.</br>
+                        <i>Our users must have a valid google email address in order to access this application.</i>
+                      </p>
+                  </div>
+
+
+                  <div class="spacer"></div>
+                  <div id="name_div" class="form_field">
+                    <label for="name_field">
+                      <img class="field_icon" src="../.././images/broker_icon.png"></img>Enter Name: </label>
+                    <input id="name_field" type="text" name="name_field" value="firstNameID lastNameID"></input>
+                </div>
+                  <div class="spacer"></div>
+
+                  <div id="company_div" class="form_field">
+                    <label for="company_field"><img class="field_icon" src="../.././images/company_icon.png"></img>Company Name: </label>
+                    <input id="company_field" type="text" name="company_field"></input>
+                      <img class="infoimg" id="info_company" title="Company Field Description" src="../.././images/info.png"></img>
+                        <div id="description_company" class="descriptionClass hidedisable">
+                          Please provide the name of the Contracting Company.</br>
+                          This company will be notified of this user request. Once approved, a verification will be sent to your email and you will have access to this Company's Job Photos.
+                          <!-- Company name is the name of the Contractor that should be found in our database. -->
+                        </div>
+                  </div>
+
+                      <input id="form_click" type="button" value="SUBMIT"></input>
+                      <input id="backBTN" type="button" value="BACK" style=""></input>
+
+                    <input id="submit" type="submit" value="OK" style="display: none"></input>
+                </form>
+            </div>
+          </div>
+        </div>
+<!--
+        <div class="basecolor">
+        <div> -->
+          <input id="request_click" type="button" value="Request Access"></input>
+      </div>
+
+
+    </div>
+
+  </body>
+</html>

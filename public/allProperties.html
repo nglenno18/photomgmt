@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <title>Property Page</title>
+
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" type="text/css" href="css/property.media.css">
+      <link rel="stylesheet" type="text/css" href="css/property.css">
+      <link rel="stylesheet" type="text/css" href="css/rootCSS.css">
+      <script src="js/libs/jquery.3.1.1.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script> -->
+    </head>
+  <body onload="initializeListeners()">
+    <a name="top"></a>
+
+    <div class="headerfiller"></div>
+    <button id="addToList">add to list</button>
+    <button id="homePage">Home</button>
+    <button id="myProperties">My Properties</button>
+    <button id="allProperties">All Properties</button>
+  </br>
+
+<!-- -------------------------------------------------------------------------------->
+    <div id="property_section" class="topside leftside">
+      <div id="property_details_Container" class="property_section">
+        <caption style="clear:both; display:flex">Property Details</caption>
+        <div id="property_details" class="property_details">
+          <p class="property_details">
+            <label placeholder="Property Address">Address Here</label>
+          </p>
+        </div>
+      </div>
+        <div class='property_section' id="property_table_container">
+          <!-- <input type="text" name="username" placeholder="UserEmail"> -->
+          <caption style="clear:both; display:flex">Property List</caption>
+		  <button style="float:right;" id="fullTable">[<- ->]</button>
+          <table id="property_table">
+		  <thead style="height:100px; width: 100%; table-layout:fixed;">
+            <!-- <tr style="display:block; position:relative;"> -->
+				<!-- <th id="tableHeader">Address</th> -->
+			<!-- </tr> -->
+		  </thead>
+            <tr>
+              <th id="tableHeader">Address</th>
+            </tr>
+          </table>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/property_rows.js"></script>
+    <script src="js/property.js"></script>
+    <script src="js/allProperties.js"></script>
+
+  </body>
+
+	
+    <script>
+    var socket = io();
+    initializeListeners = function(e){
+      console.log('Property Page Initialized...');
+      var addToList = document.getElementById('addToList');
+      addToList.addEventListener('click', addProperty);
+      addToList.click();
+	  document.getElementById('fullTable').addEventListener('click', function(e){
+		return window.location.href=('/tables/allProperties');
+	  });
+    };
+    </script>
+</html>

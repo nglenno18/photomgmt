@@ -1,0 +1,41 @@
+:root{
+  --brand_theme: rgb(211, 98, 32);
+  --themeR: 211;
+  --themeG: 98;
+  --themeB: 32;
+}
+
+body{
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+}
+
+#searchBarContainer img{
+  top: 23px!important;
+  padding-left: 15px;
+}
+
+.select2_contain {
+    position: relative;
+    top: -23px;
+}
+
+@media (min-width: 820px){
+  #main_container.form_pane .center_vert img {
+      left: calc(-100% + 140px);
+      min-height: 50px;
+      min-width: 50px;
+      top: 40px;
+  }
+}
+
+@media (max-width: 820px){
+  .div:not(#property_grid) .center_vert img {
+    position: absolute;
+    left: 0px;
+      padding-top: 40px;
+      min-height: 60px;
+      max-height: 150px;
+      max-width: 150px;
+      width: auto;
+  }
+}

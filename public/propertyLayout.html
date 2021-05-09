@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <title>User Properties</title>
+
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" type="text/css" href="css/layouts/propertyLayout.css">
+      <link rel="stylesheet" type="text/css" href="css/layouts/rootCSS.css">
+      <link rel="stylesheet" type="text/css" href="css/layouts/detailExpansions.css">
+      <script src="js/libs/jquery.3.1.1.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script> -->
+    </head>
+  <body onload="initializeListeners()">
+    <a name="top"></a>
+
+    <div class="headerfiller"></div>
+    <button id="addToList">add to list</button>
+    <button id="homePage">Home</button>
+    <button id="myProperties">My Properties</button>
+    <button id="allProperties">All Properties</button>
+  </br>
+
+<!-- -------------------------------------------------------------------------------->
+    <div id="property_section">
+      <div class="section_break"></div>
+      <div id="navigationPanel">
+        <button style="padding-left: 0px;" title="Back to List">
+          <img src=".././images/returnbutton_grey.png"></img>
+        </button>
+        <button style="padding-left: 0px;" title="Share Property">
+          <img src=".././images/sharebutton_grey.png"></img>
+        </button>
+        <button title="Directions"><img src=".././images/googlemaps_BW.png"></img></button>
+        <button title="Property Images"><img src=".././images/uploadImage_grey.png"></img></button>
+        <div id="navButtons">
+          <button id="backButton" class="navButton" title="Previous Property"><img src=".././images/navArrow_back.png"></img></button>
+          <div class="horizontalseperator"></div>
+          <button id="nextButton" class="navButton" title="Next Property"><img src=".././images/navArrow.png"></img></button>
+        </div>
+      </div>
+      <div class="section_break" style="background-color: var(--bgColorDark2); opacity:.5; box-shadow: 0px 1px 4px var(--bgColorDark1)"></div>
+
+      <div class="detailSection" id="propertyInfo">
+        <div id="propertyLabel" class="headerLabel">555 Test Street Avenues, Address Town, Illinois</div>
+        <div class="keyValue">
+          <span class="keyField">Service Company</span><span class="valueField reflink">Fay Servicing<img src=".././images/navArrow.png"></img></span>
+        </div>
+        <div class="keyValue">
+          <span class="keyField">Client</span><span class="valueField reflink">Oak Hill<img src=".././images/navArrow.png"></img></span>
+        </div>
+        <div class="keyValue">
+          <span class="keyField">Loan Number</span><span class="valueField">000156473</span>
+        </div>
+      </div>
+
+      <div class="section_break"></div>
+
+      <div class="detailSection" id="propertyDetails">
+        <div class="headerLabel">Property Details</div>
+
+        <div class="keyValue">
+          <span class="keyField">LockBox Code</span><span class="valueField">00301002200</span>
+        </div>
+        <div class="keyValue">
+          <span class="keyField">Asset Received</span><span class="valueField">01/20/2018</span>
+          <span class="valueField reflink">01/14/2018 - 01/20/2018<img src=".././images/navArrow.png"></img></span>
+        </div>
+        <div class="keyValue">
+          <span class="keyField">Budget</span><span class="valueField">40-50k</span>
+        </div>
+        <div id="Status" class="keyValue">
+          <span class="keyField">Status</span><span class="valueField quickdrop">To Be Revisited<img src=".././images/expandarrow.png"></img></span>
+        </div>
+        <div id="Phase" class="keyValue">
+          <span class="keyField">Phase</span><span class="valueField quickdrop">Phase 3<img src=".././images/expandarrow.png"></img></span>
+        </div>
+      </div>
+
+      <div class="section_break"></div>
+
+      <div class="detailSection" id="2ndInfoSection">
+        <div class="keyValue">
+          <span class="keyField">Service Company</span><span class="valueField">Fay Servicing</span>
+        </div>
+        <div class="keyValue">
+          <span class="keyField">Client</span><span class="valueField reflink">Oak Hill<img src=".././images/generate_link_blue.png"></img></span>
+        </div>
+        <div class="keyValue">
+          <span class="keyField">Loan Number</span><span class="valueField">000156473</span>
+        </div>
+      </div>
+      <div id="property_details_Container" class="property_section">
+        <caption style="clear:both; display:flex">Property Details</caption>
+        <div id="property_details">
+          <p class="property_details">
+            <label placeholder="Property Address">Address Here</label>
+          </p>
+        </div>
+      </div>
+        <div class='property_section' id="property_table_container">
+          <!-- <input type="text" name="username" placeholder="UserEmail"> -->
+          <caption style="clear:both; display:flex">Property List</caption>
+          <table id="property_table">
+            <tr>
+              <th id="tableHeader">Property List</th>
+            </tr>
+          </table>
+        </div>
+      <div class='usernameBox login_section'></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="js/layouts/property_rows.js"></script>
+    <script src="js/layouts/property.js"></script>
+    <script src="js/layouts/expansions.js"></script>
+    <script src="js/layouts/propertyLayout.js"></script>
+
+  </body>
+
+    <script>
+    initializeListeners = function(e){
+      console.log('Property Page Initialized...');
+      var addToList = document.getElementById('addToList');
+      addToList.addEventListener('click', addProperty);
+      addToList.click();
+
+      // vertically align the values to the keys that are multi-line:
+      alignDetails();
+      // console.log('Initialize User\'s Properties');
+      // loadProperties(e);
+    };
+    </script>
+</html>

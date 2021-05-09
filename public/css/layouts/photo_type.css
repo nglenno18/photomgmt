@@ -1,0 +1,299 @@
+:root{
+  --listpadding: 5px;
+  /* --ch_border: #adb8c0; */
+  --ch_border_checked: rgba(var(--themeR), var(--themeG), var(--themeB), 1);
+  --ch_border: grey;
+}
+
+#wo_table_wrapper .dataTables_scroll{
+  max-height: 340px;
+  overflow-y: auto;
+}
+.restrict{
+  pointer-events:none!important;
+  opacity: 0.5;
+  cursor: default!important;
+}
+.folderCheck{
+  /* grid-template-columns: 1fr 30px!important; */
+  grid-template-columns: 1fr 50px 30px!important;
+}
+.foldercount{
+  grid-column: 2;
+  text-align: center;
+  font-weight: normal;
+  font-size: 90%;
+  vertical-align: middle;
+  margin-top: 3px
+}
+.folderCheck .checkboxClass{
+  grid-column:3;
+  grid-row: 1;
+}
+.folderCheck .folderName{
+  grid-column: 1;
+  grid-row: 1;
+  text-align: left;
+  padding-right: 0px;
+  padding-left: 8px;
+}
+
+#timeselection .folderCheck{
+  background-color: var(--highlightshade);
+}
+.sub_folder{
+  width: 90%!important;
+  /* float: right; */
+  margin-left: calc(100% - 90% - 4px)!important;
+  background-color: Transparent!important;
+  margin-top: 0px!important;
+  margin-bottom: 0px!important;
+}
+.sub_folder .folderCheck{
+  /* background-color: var(--highlightrgb_4)!important; */
+  background-color: var(--highlightshade)!important;
+  background-color: Transparent!important;
+  border: 1px var(--lightgrey) solid;
+  border-bottom-color:Transparent;
+  border-top-color: Transparent;
+}
+.sub_folder .folderName{
+  font-size: 90%;
+  /* padding-top: 10px; */
+}
+#period_Punchlist .folderCheck{
+  /* padding-top: 2px; */
+  /* box-shadow: 0px -3px 2px var(--lightgrey); */
+  box-shadow: 0px 2px 4px var(--lightgrey) inset;
+  border-top-color: #c3c3c3;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+#period_During{
+  border-bottom-width: 0px;
+  margin-bottom: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.spacebreak{
+  margin: 0px;
+  width: 90%!important;
+  /* float: right; */
+  margin-left: calc(100% - 90% - 4px)!important;
+  border: 0px transparent solid;
+  background-color: var(--lightgrey);
+}
+
+/* SMALL SCREEN */
+@media(max-width:800px){
+  #body_wrapper{
+    display: block;
+  }
+  #tag_selection{
+    max-height: 500px;
+  }
+}
+
+/* MAX SCREEN */
+@media(min-width:800px){
+  #body_wrapper:not(.contractor){
+    display: grid;
+    grid-template-columns: minmax(250px, 200px) minmax(400px, 1fr);
+  }
+  #body_wrapper.contractor{
+    display: block;
+  }
+  #tag_selection{
+    max-height: 1000px;
+  }
+}
+
+.listHeader{
+  font-weight: bold;
+  display: block;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  pointer-events: none;
+}
+.listHeader .checkboxClass{
+  display:none!important;
+}
+#tag_selection .listHeader{
+  padding-top: 10px;
+  padding-bottom: 0px;
+  box-shadow: 0px 3px 9px 0px var(--shadow_color) inset, 0px 3px 2px var(--grey);
+}
+
+
+.hiddenCheck{
+  display:none!important;
+}
+#jobsTag{
+  display: block!important;
+  pointer-events: none;
+  background-color: var(--highlightrgb_Dark);
+}
+#jobsTag .innerFolderTag{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#propertyRefs_Wrap{
+  background-color: Transparent;
+  box-shadow: 0px 2px 1px var(--lightgrey);
+
+}
+.listwrap{
+  /* width: calc(100% - 6px); */
+  border-right: 1px solid var(--lightgrey);
+  border-left: 1px solid var(--lightgrey);
+  box-shadow: 0px 2px 1px var(--lightgrey);
+  margin: 0px auto;
+  padding-bottom: 7px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+#folderSelection{
+  margin-top: 0px;
+}
+
+#generalTag{
+  background-color: var(--highlightrgb_Dark);
+  pointer-events: none;
+  font-weight: bold;
+}
+#brokerCheck{
+  background-color: Transparent;
+  outline-color:Transparent;
+  pointer-events: none;
+  content: none!important;
+  border-color: Transparent;
+}
+#photo_type, #timeselection{
+  /* background-color: var(--highlightshade); */
+  /* height: 100%; */
+  border-radius: 0px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  margin-bottom: 20px;
+}
+#folder_list_wrap{
+  margin-bottom: 0px!important;
+  border-radius: 0px;
+  background-color: var(--highlightshade);
+}
+.folderOption{
+  cursor: pointer;
+    text-align: right;
+    width: calc(100% - 8px);
+    /* height: 30px; */
+    /* border: 0px Transparent solid; */
+    /* border-top: 1px black solid; */
+    /* background-color: rgba(255,255,255, 0.7); */
+    margin: 2px auto;
+    box-shadow: 0px 3px 2px Transparent;
+}
+
+.folderCheck, .tagCheck{
+  display: grid;
+  border-radius: 2px;
+  /* padding-top: var(--listpadding); */
+  box-shadow: 0px 3px 2px Transparent;
+  /* background-color: rgba(255,255,255, 0.7); */
+}
+.folderCheck{
+  grid-template-columns: 30px 1fr;
+  background-color: var(--highlightshade);
+}
+
+
+.folderOption.checked .folderDescription{
+  border-left: 3px solid rgba(var(--themeR), var(--themeG), var(--themeB), 0.5);
+      /* width: calc(100% - 2px); */
+      margin-left: 0px;
+      padding-left: 10px;
+}
+.folderOption:not(.sub_folder).checked.hovering .folderCheck{
+  border-left: 3px solid var(--ch_border_checked);
+  box-shadow: 0px 1px 3px var(--grey);
+}
+.folderOption:not(.sub_folder).checked:not(.hovering) .folderCheck{
+  border-left: 3px solid var(--ch_border_checked);
+  box-shadow: 0px 1px 2px var(--grey);
+}
+.sub_folder.checked.hovering .folderCheck{
+  border-left: 2px solid rgba(var(--themeR), var(--themeG), var(--themeB), 0.7);
+  box-shadow: 0px 1px 3px var(--grey);
+}
+.sub_folder.checked:not(.hovering) .folderCheck{
+  border-left: 2px solid rgba(var(--themeR), var(--themeG), var(--themeB), 0.7);
+  box-shadow: 0px 1px 2px var(--grey);
+}
+.folderOption:not(.checked).hovering .folderCheck{
+  box-shadow: 0px 3px 2px Transparent;
+  opacity: 0.7;
+}
+.folderOption.checked .folderCheck{
+  font-weight: bold;
+}
+.folderOption.checked .folderName{
+  margin-bottom: calc(2px + var(--listpadding));
+}
+.folderOption.checked .folderCheck{
+  border-radius: 2px;
+  /* z-index: 100; */
+  background-color: white;
+}
+.folderOption:not(.checked) .folderCheck{
+  padding-bottom: var(--listpadding);
+}
+.folderOption:not(.checked) .folderDescription{
+  display:none;
+}
+.folderOption.checked .folderDescription{
+  display: block;
+  text-align: left;
+  /* z-index: 50; */
+}
+.folderOption.checked .checkboxClass{
+  -webkit-appearance: none;
+  background-color: var(--highlightshade_opac);
+	border: 1px solid var(--ch_border_checked);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+  content: '\2714';
+  color: black;
+  width: 20px;
+  height: 20px;
+}
+.sub_folder:not(.checked) .checkboxClass{
+  border-color: whitesmoke!important;
+}
+
+
+.folderOption .folderName{
+  padding-top: 4px;
+  cursor: pointer;
+}
+.folderOption .folderDescription{
+  grid-column: 1 / 3;
+  background-color: var(--evenshade_opaque);
+  padding-bottom: var(--listpadding);
+  padding-top: 8px;
+  box-shadow: inset 0px 1px 2px var(--grey);
+  padding-right: 4px;
+  padding-left: 4px;
+  color: #423f3f;
+  font-size: 80%;
+}
+.folderOption label{
+  text-align: center;
+  margin-right: 3px;
+  text-transform: uppercase;
+  font-size: 90%;
+  cursor: pointer;
+}
+.folderOption.hovering {
+  background-color: rgba(255, 255, 255, 1);
+}

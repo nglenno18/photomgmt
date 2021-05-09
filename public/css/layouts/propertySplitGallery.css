@@ -1,0 +1,478 @@
+:root{
+  --sq_length: 335px;
+  --gallery_margin_factor: 2px;
+  --minwidth: 750px;
+  --standard_buttonHT: 40px;
+  --thumbnail_length: 380px;
+}
+
+#photoPreviewDiv{
+	display:none;
+}
+
+@media(max-width:850px){
+	#photo_sectionLabel{
+		max-width: 60%;
+	}
+}
+
+.thumbWrap{
+  /* display: table; */
+  display: grid;
+  overflow-x: none;
+  width: 100%;
+  height: auto;
+  border: var(--standard_border);
+  border-color: Transparent;
+  /* padding-top: 2px; */
+}
+
+.thumbnail{
+  clear: both;
+  display: inline-table;
+  /* min-width: 80px; */
+  width: 100%;
+  max-height: var(--thumbnail_length);
+  border: 2px solid Transparent;
+  /* background-color: #C7C7C7; */
+	background-color: whitesmoke;
+	margin: 3px;
+	height: auto;
+	box-shadow: 0px 5px 10px #80808099;
+}
+
+.thumbnail:hover{
+	background-color: lightgrey;
+	border-color: white;
+	overflow:hidden;
+}
+.thumbnail:active{
+	background-color: lightgrey;
+	border-color: white;
+	overflow:hidden;
+		box-shadow: 0px 3px 10px black;
+}
+
+.thumbWrap_actions{
+	background-color: Transparent;
+  padding: 0px;
+  padding-bottom: 1px;
+  border: var(--standard_border);
+  border-color: Transparent;
+  border-radius: 2px;
+  font-size: 80%;
+  height: 80%;
+  width: -webkit-fill-available;
+  margin: 0px auto;
+}
+
+.thumbnail img{
+	/* height: var(--thumbnail_length); */
+    width:100%;
+  	height: auto;
+	padding-top: 2px;
+	margin: 0px auto;
+  cursor: pointer;
+}
+img.multiselected{
+	opacity: 0.1;
+	border-color: black;
+}
+div.multiselected{
+	background-color: lightgrey;
+	border-color: white;
+}
+
+.spacer{
+  clear: both;
+  display: inline-block;
+  width: var(--gallery_margin_factor);
+}
+
+/*
+  #photoPreviewDiv must be display type "table":
+    Otherwise, the "overflow" property does not auto-adjust the div's Height
+    w/ the height of the image inside it.
+    - [display:table, overflow:auto] --> auto adjust height
+    - [display:flex, overflow:auto, ] --> ignores bottom content, but can vertically align
+
+  Place a new div inside #photoPreviewDiv that will hold the image
+    ??
+*/
+
+
+.preview{
+  vertical-align: middle;
+  min-width: calc(var(--sq_length) - var(--standard_Padding)*6);
+}
+
+/*
+  absolute center the image
+*/
+#photoPreviewDiv img{
+}
+
+.dragdrop_label, .multiSelect_options{
+    float: right;
+    color: var(--gbDarkColor2);
+    font-weight: bold;
+    font-size: 13px;
+    z-index: 101;
+    /* position: absolute; */
+    /* width: 73%;		/* (80%) of the body and 93% of that = gallery_container*/
+}
+
+.multiSelect_options{
+    position: absolute;
+	background-color:Transparent;
+	margin-top: 12px;
+	box-shadow: -1px 0px 10px black;
+	/* border: var(--standard_border); */
+	border-radius:2px;
+	margin-left: 59%;
+}
+.multiSelect_options button{
+	  background-color: Transparent;
+	  border: 0px solid Transparent;
+	outline-color: Transparent;
+}
+.multiSelect_options img{
+    padding: 5px;
+	background-color: Transparent;
+	border: 0px;
+	overflow: fill;
+	/* height: var(--sq_length); */
+	height: var(--imageButtonLength);
+	max-height: calc(var(--standard_buttonHT)/ 1);
+	max-width: calc(var(--standard_buttonHT)/ 1);
+	min-height: calc(var(--standard_buttonHT)/ 1);
+	cursor: pointer;
+	outline-color: Transparent;
+}
+.leftMost{
+	box-shadow: 5px -1px 30px grey inset;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+.rightMost{
+	box-shadow: -5px -1px 30px grey inset;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+.leftMost:hover{
+	/* box-shadow: 0px 0px 10px lightgrey inset; */
+	opacity: 0.5;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+.rightMost:hover{
+	box-shadow: 0px 0px 10px lightgrey inset;
+		/* opacity: 0.5; */
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+
+.multiSelect_options img:hover{
+	/* opacity: 1; */
+}
+
+
+.dragdrop_label{
+	padding-top:10px;
+	width: 100%;
+	opacity: 0.5;
+    padding-right: 4px;
+}
+.filler{
+	height: var(--standard_buttonHT);
+	color: Transparent !important;
+	background-color: Transparent !important;
+	pointer-events: none;
+
+}
+.dragdrop_label i{
+    float: right;
+	padding-bottom: 2px;
+	padding-right: 10px;
+}
+.dragdrop_label:hover{
+	cursor: pointer;
+	opacity: 0.9;
+}
+.clear{
+  clear: both;
+}
+
+.invisible{
+  background-color: Transparent;
+  border-color: Transparent;
+}
+.breakbar{
+  /* position: relative;
+  top:100px; */
+  clear: both;
+  float: right;
+  display: inline-block;
+  min-width: 100%;
+  min-height: 0px;
+  /* background-color: Transparent; */
+  background-color: lightblue;
+  margin: 0px;
+  padding: 0px;
+  z-index: 1;
+  /* border: var(--standard_border); */
+}
+
+
+
+	.gallery_menu{
+	  display: table;
+	  /* border: var(--standard_border); */
+	  margin: 10px auto;
+	  min-width: 300px;
+	  /* top: calc(100% - 200px); */
+	  display: flex;
+	  justify-content: space-between;
+	  z-index: 90;
+	}
+
+@media(min-width: 700px){
+	#gallery_menu{
+	  /* border: var(--standard_border); */
+	  margin-right: 0px;
+	  width: 30%;
+	  /* top: calc(100% - 200px); */
+	}
+
+	.gallery_tab{
+	  top: calc(var(--standard_tabHT) - calc(var(--standard_tabHT) / 1.5 + 2px));
+	  /* top: calc(var(--standard_tabHT) - var(--standard_Padding)*2); */
+	}
+	#gallery_menu{
+		float:left;
+	}
+	.buttonPanel{
+		position: relative;
+		top: calc(-1 * var(--standard_buttonHT)/1.5);
+	}
+	#multiSelect_options{
+		/* width: 73%; */
+	}
+}
+
+@media(max-width: 700px){
+	#gallery_menu{
+	  /* border: var(--standard_border); */
+	  margin: 0px auto;
+	  width: 100%;
+	  padding: 0px;
+	  /* top: calc(100% - 200px); */
+	}
+
+	.gallery_tab{
+	  top: calc(var(--standard_tabHT) - calc(var(--standard_tabHT) / 1.5 + 10px));
+	  /* top: calc(var(--standard_tabHT) - var(--standard_Padding)*2); */
+	}
+	#gallery_container{
+		position: relative;
+		top: calc(var(--standard_tabHT) * -1.5);
+		  border-top-left-radius: 0px;
+	}
+
+	#gallery_wrapper{
+		position: relative;
+		top: 20px;
+	}
+
+}
+
+.gallery_tab{
+	outline-color: #6bcee5;
+	display: table-cell;
+	text-align: center;
+	width: 100%;
+	z-index: 100;
+	height: var(--standard_tabHT);
+	position: relative;
+	border: var(--standard_border);
+	border-radius: 1px;
+}
+.gallery_tab:not(.selected){
+	/* box-shadow: 2px 2px 2px var(--gallery_grey) inset; */
+	box-shadow: 0px 0px 2px grey inset;
+	bottom-border-color: Transparent;
+		min-width: 20px;
+}
+
+.last_tab{
+	border-top-right-radius: 5px;
+}
+#before_tab{
+	border-top-left-radius: 5px;
+}
+
+.selected{
+	background-color: var(--gallery_grey);
+	border-bottom-color: var(--gallery_grey);
+	border-bottom-width: 1px;
+	box-shadow: 0px 10px 5px var(--gallery_grey);
+	font-weight: bold;
+	min-width: 90px;
+}
+
+.gallery_container{
+	/* max-width: 500px; */
+  width:100%;
+	margin: 0px auto;
+  /* bring the container width to the edge of the Proeprty section to the end of the button panel */
+  min-height: 500px;
+  background-color: var(--photo_section_background);
+  border-top: 0px;
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+  box-shadow: var(--standard_boxShadow);
+  z-index: 90;
+}
+#gallery_assortment{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+}
+.dropdown_gallery{
+  min-height: 600px;
+  background-color: var(--gallery_grey);
+  margin: 3px auto;
+  border: var(--standard_border);
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+
+  box-shadow: 3px 3px 5px grey inset;
+  /* display: table; */
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 10px;
+  padding-top: 0px;
+}
+
+.wrapper{
+  border: 1px;
+  width: 100%;
+}
+.buttonPanel{
+  float:right;
+  display:inline-block;
+  height:auto;
+  margin: 0 auto;
+  padding: 0px;
+  z-index: 91;
+}
+#photoButtons{
+  border: 0px;
+  margin-left: 3px;
+  box-shadow: 0px 0px 0px Transparent;
+  min-width: 100px;
+  /* max-width: 110px; */
+  margin-top: 2px;
+  position: relative;
+    float: right;
+  /* top: calc(var(--standard_buttonHT) - (var(--imageButtonPx) * 2)); */
+  /* top: calc(var(--imageButton) - var(--gallery_margin_factor)); */
+  justify-content: space-between;
+   z-index: 91;
+}
+.photoButtons{
+  background-color: Transparent;
+  border: 0px;
+  box-shadow: 0px 0px 0px Transparent;
+  display: table-cell;
+  overflow: fill;
+  /* height: var(--sq_length); */
+  margin:5px;
+  padding: 0px;
+  float:right;
+  /* margin-top: 2px; */
+  /* width: var(--imageButtonLength); */
+  height: var(--imageButtonLength);
+  max-height: calc(var(--standard_buttonHT)/ 1);
+  max-width: calc(var(--standard_buttonHT)/ 1);
+  min-height: calc(var(--standard_buttonHT)/ 1);
+  cursor: pointer;
+  vertical-align: bottom;
+  outline-color: Transparent;
+}
+#uploadPhoto{
+	/* margin-right: 10px; */
+	/* opacity: .7; */
+}
+
+.photoButtons img{
+  /* border: var(--standard_border); */
+  padding: 1px;
+  margin: 0px;
+  align-self: center;
+  /* padding-top: 2%; */
+  width:100%;
+  max-height: inherit;
+  max-width: inherit;
+}
+.photoButtons img:hover{
+  opacity: 0.8;
+
+}
+
+.dragovered{
+	opacity: 0.5;
+	color: green;
+}
+
+
+h2{
+	padding-top: 20px;
+}
+
+
+iframe{
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	margin: 30px auto;
+	width: 100%;
+	border: var(--standard_border);
+	border-color: Transparent;
+	border-radius: 2px;
+	z-index: 103;
+	height: 100%;
+	box-shadow : var(--standard_boxShadow);
+}
+.frameShadow{
+	position: fixed;
+	top: -1%;
+	left: -1%;
+	margin: 0px auto;
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+	background-color: var(--themeColorDark);
+	border-radius: 2px;
+	z-index: 102;
+}
+
+#imageViewButtons{
+	position: fixed;
+	top: 2%;
+	left: 1%;
+}
+#imageViewButtons, #openImage, #iFrameExit{
+
+	background-color: Transparent;
+	z-index: 104;
+	font-size: 150%;
+	font-weight: bold;
+	outline-color: grey;
+}
+#imageViewButtons button{
+	width: 50px;
+	height: 50px;
+}
+#imageViewButtons button:hover{
+	box-shadow: 2px 2px 2px grey inset;
+}

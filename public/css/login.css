@@ -1,0 +1,66 @@
+:root{
+  --sq_length: 200px;
+  --standard_buttonHT: 30px;
+  --standard_tabHT: 20px;
+  --standard_Padding: 3px;
+  --imageButtonLength: 8%;
+  --imageButtonPx: 8px;
+  --rightside_percentage: 30%;
+  --user_width : 500px;
+  --topside_detail_height: 200px;
+  --standard_border: 1px grey solid;
+}
+
+body {
+  background-color:#f0f0f2;
+  margin:0 auto;
+  padding:0;
+  font-family:"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 1%;
+  min-width: var(--sq_length);
+  max-width: 2000px;
+  /* overflow: hidden; */
+  padding-left: var(--outermargin);
+  padding-right: var(--outermargin);
+  padding-bottom: 300px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  box-shadow: 1px 1px 1px grey;
+  border-radius: 5px;
+}
+
+#login_section{
+  clear: both;
+  margin:0 auto;
+  width: 50%;
+  border: var(--standard_border);
+  min-height: var(--sq_length);
+  min-width: var(--sq_length);
+  border: var(--standard_border);
+  max-height: var(--sq_length);
+  border-radius: 3px;
+}
+
+.login_section{
+  clear: both;
+  width: 50%;
+  min-width: 150px;
+  margin: 10 auto;
+}
+
+.login_section input[type:button]{
+  clear: both;
+  margin: 0 auto;
+}
+
+.headerfiller{
+  clear: both;
+  margin: 0 auto;
+  margin-top: 10px;
+  min-height: 40px;
+  background-color: #cccccc;
+  box-shadow: var(--shadow_fadeDown);
+  margin-bottom: 30px;
+  width: 99%;
+}

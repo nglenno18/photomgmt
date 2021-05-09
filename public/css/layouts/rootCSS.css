@@ -1,0 +1,203 @@
+:root{
+  --sq_length: 200px;
+  --gallery_margin_factor: 2px;
+  --minwidth: 900px;
+  --maxsection_width: 300px;
+  --standard_buttonHT: 30px;
+  --standard_tabHT: 40px;
+  --standard_Padding: 3px;
+  --imageButtonLength: 8%;
+  --imageButtonPx: 8px;
+  --rightside_percentage: 30%;
+  --topside_height : 500px;
+  --topside_detail_height: 200px;
+  --highlight_border_width: 2px;
+  --highlight_border: var(--highlight_border_width) #6bcee5 solid;
+  --mobile-main-width: 90%;
+  --min_width_mainCol: 300px;
+  --table_padding_thin: 3px;
+  --table_padding_thick: 8px;
+  --th_box-shadow: 0px 5px 12px 0px var(--bgColorDark2);
+  --table-height: 400px;
+  --tbody_width: calc(100% + 15px);  /*hide the vertical scrollbar*/
+  --hover-box-shadow: 2px 3px 2px var(--bgColorDark2);
+  /* --gallery_grey: #cccccc; */
+    --gallery_grey: #F2F2F2;
+    --standard_border: 1px var(--bgColorDark2) solid;
+  --dragHeight: 15px;
+
+}
+
+
+.hidedisable{
+	position: absolute;
+	display: none !important;
+}
+
+.centered{
+	width: 90%;
+	margin: 10px auto;
+}
+#galleryDrag{
+  z-index: 100;
+  /* border: var(--standard_border); */
+  border-top-width: 0px;
+}
+
+#dropgallery_wrapper{
+	height: auto;
+}
+
+td{
+	padding: 10px 15px 10px 15px;
+	padding-top: var(--table_padding_thin);
+	padding-left: var(--table_padding_thick);
+	padding-bottom: var(--table_padding_thin);
+	border-right: 1px solid var(--themColorLight);
+	cursor: pointer;
+	/* padding-left: var(--table_padding_thin); */
+	/* height: 30px; */
+}
+th{
+	/* padding: 10px 15px 10px 15px; */
+  padding: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.standardRow{
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+}
+
+.delete{
+  background-color: Transparent;
+  border: var(--standard_border);
+  border-color: lightgrey;
+  border-radius: 2px;
+  font-size: 80%;
+  height: 100%;
+  /* border-top-color: Transparent; */
+}
+
+.delete, .thumbaction{
+    /* margin: 3px;
+    padding: 8px;
+    padding-bottom: 1px;
+    padding-top: 1px; */
+}
+.hideFile{
+	display:none;
+}
+.onHover:hover{
+	opacity: 0.5;
+	cursor: pointer;
+}
+.delete:hover{
+  color: black;
+  border: var(--standard_border);
+  /* border-color: black; */
+}
+.inc{
+  opacity: 0.1;
+  border-color: grey;
+}
+
+.headerfiller{
+  margin-top: 10px;
+  min-height: 40px;
+  background-color: #cccccc;
+  box-shadow: var(--shadow_fadeDown);
+  margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#fillerHeader{
+	background-color: Transparent;
+	color: Transparent;
+	border-width: 0px;
+	box-shadow: 0px 0px 0px Transparent;
+}
+#fillerHeader:not(.deckClass){
+	/* display: none; */
+}
+
+body {
+  background-color:var(--bgColorLight);
+  padding:0;
+  font-family:"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 1%;
+  min-width: var(--sq_length);
+  /* max-width: var(--maxsection_width); */
+  /* overflow: hidden; */
+  padding-left: var(--outermargin);
+  padding-right: var(--outermargin);
+  padding-bottom: 300px;
+  padding-top: 20px;
+  /* margin-bottom: 20px; */
+  /* margin-top: 10px; */
+  margin-right: 15px;
+  margin-left: 15px;
+  box-shadow: 1px 1px 1px var(--bgColorDark2);
+  border-radius: 5px;
+  margin:20px auto;
+  overflow-x: hidden;
+}
+
+#searchSum:hover, #searchSum.clicked{
+  cursor: pointer;
+  opacity: 0.7;
+  font-weight: bold;
+}
+
+@media (min-width: 500px){
+  #searchSum{
+    font-size: 115%;
+    float: right;
+    position: relative;
+    top: 20px;
+    left: -25px;
+    z-index: 101;
+  }
+  #propertySearchbar .select2-search--dropdown{
+    width: 100%!important;
+    padding-bottom: 0px!important;
+  }
+}
+@media (max-width: 500px){
+  body{
+    padding-top: 0px!important;
+  }
+  #searchSum{
+    clear: both;
+    font-size: 115%;
+    float: right;
+    position: relative;
+    top: -38px;
+    left: -5px;
+    z-index: 101;
+  }
+  .select2-search--dropdown{
+    width: calc(100% - 10px)!important;
+    padding-bottom: 0px!important;
+  }
+  #magGlass{
+    left: 0px!important;
+  }
+  #searchBarContainer{
+    padding-left: 0px!important;
+    margin-left: 0px!important;
+  }
+  .select2-results{
+    width: calc(100% - 35px)!important;
+    margin-left: 20px!important;
+  }
+  #homeImage{
+    padding-left: 0px!important;
+  }
+}
+
+@media (max-width: 400px){
+  #magGlass{
+    left: calc(100% - 200px)!important;
+  }
+}

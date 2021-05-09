@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <title>User Properties</title>
+
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" type="text/css" href="css/layouts/propertyLayout.css">
+      <link rel="stylesheet" type="text/css" href="css/layouts/rootCSS.css">
+      <link rel="stylesheet" type="text/css" href="css/layouts/detailExpansions.css">
+      <link rel="stylesheet" type="text/css" href="css/layouts/property_ImageUpload.css">
+      <script src="js/libs/jquery.3.1.1.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script> -->
+    </head>
+  <body onload="initializeListeners()">
+    <a name="top"></a>
+
+    <div class="headerfiller"></div>
+	    <button id="addToList" style="display:none;">add to list</button>
+    <button id="homePage">Home</button>
+    <button id="myProperties">My Properties</button>
+  </br>
+
+  
+	<div id="page_wrapper">
+<!-- -------------------------------------------------------------------------------->
+    <div id="property_section" class="leftside">
+      <div class="section_break"></div>
+      <div id="navigationPanel">
+        <button style="padding-left: 0px;" title="Back to List">
+          <img src=".././images/returnbutton_grey.png"></img>
+        </button>
+        <button style="padding-left: 0px;" title="Share Property">
+          <img src=".././images/sharebutton_grey.png"></img>
+        </button>
+        <button title="Directions"><img src=".././images/googlemaps_BW.png"></img></button>
+        <button title="Property Images"><img src=".././images/uploadImage_grey.png"></img></button>
+        <div id="navButtons">
+          <button id="backButton" class="navButton" title="Previous Property"><img src=".././images/navArrow_back.png"></img></button>
+          <div class="horizontalseperator"></div>
+          <button id="nextButton" class="navButton" title="Next Property"><img src=".././images/navArrow.png"></img></button>
+        </div>
+      </div>
+      <div class="section_break" style="background-color: var(--bgColorDark2); opacity:.5; box-shadow: 0px 1px 4px var(--bgColorDark1)"></div>
+
+	  <div id="property_dropdownContainer">
+        <select id="property_dropdown">
+			
+		</select>
+      </div>
+	  
+      <div class="section_break" style="background-color: var(--bgColorDark2); opacity:.5; box-shadow: 0px 1px 4px var(--bgColorDark1)"></div>
+
+      <div class="detailSection" id="propertyInfo">
+        <div id="propertyLabel" class="headerLabel">555 Test Street Avenues, Address Town, Illinois</div>
+        <div class="keyValue" id="Service Company">
+          <span class="keyField">Service Company</span><span class="valueField reflink">Fay Servicing<img src=".././images/navArrow.png"></img></span>
+        </div>
+        <div class="keyValue" id="Client">
+          <span class="keyField">Client</span><span class="valueField reflink">Oak Hill<img src=".././images/navArrow.png"></img></span>
+        </div>
+        <div class="keyValue" id="Loan Number">
+          <span class="keyField">Loan Number</span><span class="valueField">000156473</span>
+        </div>
+      </div>
+
+      <div class="section_break"></div>
+
+      <div class="detailSection" id="propertyDetails">
+        <div class="headerLabel">Property Details</div>
+
+        <div class="keyValue" id="LockBox Code">
+          <span class="keyField">LockBox Code</span><span class="valueField">00301002200</span>
+        </div>
+        <div class="keyValue" id="Asset Received">
+          <span class="keyField">Asset Received</span><span class="valueField">01/20/2018</span>
+          <span class="valueField reflink">01/14/2018 - 01/20/2018<img src=".././images/navArrow.png"></img></span>
+        </div>
+        <div class="keyValue" id="Budget">
+          <span class="keyField">Budget</span><span class="valueField">40-50k</span>
+        </div>
+        <div id="Status" class="keyValue">
+          <span class="keyField">Status</span><span class="valueField quickdrop">To Be Revisited<img src=".././images/expandarrow.png"></img></span>
+        </div>
+        <div id="Phase" class="keyValue">
+          <span class="keyField">Phase</span><span class="valueField quickdrop">Phase 3<img src=".././images/expandarrow.png"></img></span>
+        </div>
+      </div>
+
+      <div class="section_break"></div>
+
+      <div class="detailSection" id="2ndInfoSection">
+        <div class="keyValue">
+          <span class="keyField">Service Company</span><span class="valueField">Fay Servicing</span>
+        </div>
+        <div class="keyValue">
+          <span class="keyField">Client</span><span class="valueField reflink">Oak Hill<img src=".././images/generate_link_blue.png"></img></span>
+        </div>
+        <div class="keyValue">
+          <span class="keyField">Loan Number</span><span class="valueField">000156473</span>
+        </div>
+      </div>
+	  
+      <div class="section_break"></div>
+
+    </div>
+
+	
+	<!------------------------------------------------------------------------------>
+      <!-- PHOTO SECTION (50% RIGHT Side -> current LG photo w/ optional dynamic dropdown gallery) -->
+      <div id="photo_section" class="rightside">
+        <!-- 30px width pinned left bar with default gallery/folder names (before/during/after) -->
+        <h2>Photo Section</h2>
+          <div id="sectionButtons">
+            <button id="addPhoto" class="testButton" style="display: none">+</button>
+            <button id="uploadPhoto" class="testButton">+</button>
+            <!-- <button id="fixed" class="testButton">F</button> -->
+          </div>
+
+          <input class="fd1" id="photoupload1" type="file" accept=".png,.jpg,.JPG,.PNG" multiple style="display: none"/>
+        <div id="photoPreviewDiv" class="standard_border clear">
+          <div id="photoPreviewContainer" onload="initUploadListeners"class="clear">
+            <img src=".././images/multi-select.png" class="preview">
+          </div>
+        </div>
+        <!-- END Current Photo Pane -->
+
+        <div id="buttonPanel" class="buttonPanel" style="width:100%">
+
+          <div id="photoButtons" class="buttonPanel" style="width:45%">
+            <button class="photoButtons" id="zoomIn" title="Gallery Zoom Level" onclick="zoomGallery('in')">
+              <img src=".././images/zoomIn_enabled.png"></img>
+            </button>
+            <button class="photoButtons" id="zoomOut" title="Gallery Zoom Level" onclick="zoomGallery('out')">
+              <img src=".././images/zoomOut_enabled.png"></img>
+            </button>
+            <button class="photoButtons" id="zoomOut" title="Gallery Zoom Level" onclick="galleryZoom">
+              <img src=".././images/zoomIn_pressed.png"  class="inactive"</img>
+            </button>
+            <button class="photoButtons" id="zoomOut" title="Gallery Zoom Level" onclick="galleryZoom">
+              <img src=".././images/zoomIn_pressed.png"  class="inactive"></img>
+            </button>
+          </div>
+          <!-- END photoButton Panel -->
+
+
+          <div id="gallery_menu">
+            <button class="gallery_tab tab" id="before_tab" title="Before Photos of this Property" onclick="dropdown(this)">
+              Before
+              <!-- <img src="images/word.png"></img> -->
+            </button>
+            <button class="gallery_tab tab" id="during_tab" title="During Photos of this Property" onclick="dropdown(this)">
+              During
+              <!-- <img src="images/word.png"></img> -->
+            </button>
+            <button class="gallery_tab tab" class="last_tab" id="after_tab" title="After Photos of this Property" onclick="dropdown(this)">
+              After
+              <!-- <img src="images/word.png"></img> -->
+            </button>
+          </div>
+        </div>
+        <!-- END buttonPanel -->
+		<!-- -------------------------------------------------------------------------------->
+      <!-- DROPDOWN SECTION -->
+      <div class="breakbar" class="standard_border"></div>
+
+      <div id="gallery_container" class="view_photo_page">
+        <!-- will extend the green of the photo_section
+                  slip this dropdown_gallery div slightly under the photo_section
+                  the width will be full
+                  the photo_section will not have a bottom-border
+                  this dropdown_gallery div will have a top border
+                  this will create the effect that the photo_section div expanded down and out through the page
+        -->
+        <div id="dropdown_gallery" class="dragContainer">
+          <!-- - ("selecting" an image from the gallery would normally update the preview with that image) -->
+        </div>
+        <!--END dropdown_gallery-->
+        <div id="galleryDrag" draggable="true" class="dragBar">˅</div>
+        <div class="breakbar" class="standard_border"></div>
+      </div>
+<!-- -------------------------------------------------------------------------------->
+
+      <div id="dragBuffer"></div>
+      <div class="breakbar" class="standard_border"></div>
+    </div>
+    <!--
+    END main_top SECTION WRAPPER
+    -->
+<!-- -------------------------------------------------------------------------------->
+</div>	
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="js/layouts/property_rows.js"></script>
+    <script src="js/layouts/property.js"></script>
+    <script src="js/layouts/expansions.js"></script>
+    <script src="js/layouts/loadProperties.js"></script>
+    <script src="js/layouts/propertyLayout.js"></script>
+	    <script src=".././js/gallery_drag.js"></script>
+    <script src=".././js/buttonhandles.js"></script>
+    <script src=".././js/utilities.js"></script>
+    <script src=".././js/gallery.js"></script>
+    <script src=".././js/imageHandles.js"></script>
+
+  </body>
+
+    <script>
+    initializeListeners = function(e){
+      console.log('Property Page Initialized...');
+      var addToList = document.getElementById('addToList');	  
+
+      // vertically align the values to the keys that are multi-line:
+      alignDetails();
+	      window.addEventListener('resize', imageButtonResize);
+    window.addEventListener('resize', displayResize);
+    imageButtonResize();
+    addButtonMovements();
+    // collect all image buttons and add Event Listeners for mouse movements
+    document.getElementById('addPhoto').addEventListener('click', addThumbnail);
+    document.addEventListener('mousedown', startGalleryDrag);
+    document.getElementById('galleryDrag').addEventListener('touchstart', startGalleryDrag);
+
+		setTimeout(function(e){
+		  console.log('erewaalhglkahf');
+		  var dropbox = document.getElementById('photoPreviewContainer');
+		  console.log(dropbox);
+		  initDropBox(dropbox);
+		  <!-- clearGallery(); -->
+		  <!-- document.getElementById('before_tab').click(); -->
+				  <!-- initializeDropdown(); -->
+					  		  initUploadListeners(e);
+		var container = document.getElementById('property_dropdown');
+		console.log('\n\nAdd Event Listener to the Dropdown box. ', container);
+		
+		container.parentNode.addEventListener('click', function(e){
+			console.log('clicked Container PARENT');
+		});
+
+		container.addEventListener('click', function(e){
+			console.log('clicked Container');
+			    var event;
+				event = document.createEvent('MouseEvents');
+				event.initMouseEvent('mousedown', true, true, window);
+				container.dispatchEvent(event);
+		});
+		
+		container.addEventListener("change", function(e){
+			console.log('\n\nAdd Event Listener to the Dropdown box');
+				var targ = e.currentTarget;
+				console.log('change Property: ', e);
+				console.log('currentTarget : ', e.currentTarget);
+				// if(targ.className.indexOf('current')>-1) targ.className = targ.className.substring(0, targ.className.indexOf('current')) + targ.className.substring(targ.className.indexOf('current')+ 'current'.length-1);
+					document.querySelectorAll('option .current').forEach((row)=>{
+							row.classList.remove('current');
+					});	
+				currentProperty = {property:container.options[container.selectedIndex].text};
+				console.log('SELECTED PROPERTY : ', currentProperty.property);
+				loadPropertyInfo(currentProperty.property);
+			});
+			
+				  // document.getElementById('photoPreviewContainer').addEventListener('click', function(e){
+		  //   console.log('photoPreview Container : ', e);
+		  // })
+		}, 1000);
+      // console.log('Initialize User\'s Properties');
+      // loadProperties(e);
+    };
+    </script>
+</html>

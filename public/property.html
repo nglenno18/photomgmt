@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <title>User Properties</title>
+
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" type="text/css" href="css/property.css">
+      <link rel="stylesheet" type="text/css" href="css/rootCSS.css">
+      <script src="js/libs/jquery.3.1.1.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script> -->
+    </head>
+  <body onload="initializeListeners()">
+    <a name="top"></a>
+
+    <div class="headerfiller"></div>
+    <button id="addToList">add to list</button>
+    <button id="homePage">Home</button>
+    <button id="myProperties">My Properties</button>
+    <button id="allProperties">All Properties</button>
+  </br>
+
+<!-- -------------------------------------------------------------------------------->
+    <div id="property_section">
+      <div id="property_details_Container" class="property_section">
+        <caption style="clear:both; display:flex">Property Details</caption>
+        <div id="property_details">
+          <p class="property_details">
+            <label placeholder="Property Address">Address Here</label>
+          </p>
+        </div>
+      </div>
+        <div class='property_section' id="property_table_container">
+          <!-- <input type="text" name="username" placeholder="UserEmail"> -->
+          <caption style="clear:both; display:flex">Property List</caption>
+          <table id="property_table">
+            <tr>
+              <th id="tableHeader">Property List</th>
+            </tr>
+          </table>
+        </div>
+      <div class='usernameBox login_section'></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="js/property_rows.js"></script>
+    <script src="js/property.js"></script>
+    <script src="js/myProperties.js"></script>
+
+  </body>
+
+    <script>
+    initializeListeners = function(e){
+      console.log('Property Page Initialized...');
+      var addToList = document.getElementById('addToList');
+      addToList.addEventListener('click', addProperty);
+      addToList.click();
+      // console.log('Initialize User\'s Properties');
+      // loadProperties(e);
+    };
+    </script>
+</html>

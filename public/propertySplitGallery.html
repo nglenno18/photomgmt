@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <title>User Properties</title>
+
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/propertyLayout.css">
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/rootCSS.css">
+	        <link rel="stylesheet" type="text/css" href=".././css/layouts/propertySplitGallery.css">
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/detailExpansions.css">
+      <script src=".././js/libs/jquery.3.1.1.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script> -->
+    </head>
+  <body onload="initializeListeners()">
+    <a name="top"></a>
+
+    <div class="headerfiller"></div>
+	    <button id="addToList" style="display:none;">add to list</button>
+    <button id="homePage" class="">All Properties</button>
+    <button id="details" class="hidedisable">details</button>
+    <button id="myProperties">My Properties</button>
+  </br>
+
+
+<div id="page_wrapper">
+<!-- -------------------------------------------------------------------------------->
+    <div id="property_section" class="centered">
+      <div class="section_break"></div>
+
+		<div id="searchBarContainer">
+      <img id="homeImage" src=".././images/homeImage_simple.png" title="All Properties" class="homeSearch"></img>
+      <img src=".././images/search_icon.png"></img>
+			<input type="text" id="searchbar"></input>
+		</div>
+      <div class="section_break" style="clear:both"></div>
+		<div class="clear"></div>
+		<div id="property_dropdownContainer" class="">
+		</div>
+
+      <div class="property_results">
+        <div class="property_item">
+        </div>
+      </div>
+
+      <div class="section_break"></div>
+
+
+
+      <div class="section_break"></div>
+	  <div id="detailsContainer">
+		<div id="propertyLabel" class="headerLabel">Loading Property Address</div>
+		<div class="detailSection" id="propertyInfo">
+			<!-- <div id="propertyLabel" class="headerLabel">555 Test Street Avenues, Address Town, Illinois</div> -->
+			<div class="keyValue" id="Service Company">
+			  <span class="keyField">Service Company</span><span class="valueField reflink">Loading SC<img src=".././images/navArrow.png"></img></span>
+			</div>
+			<div class="keyValue" id="Client">
+			  <span class="keyField">Client</span><span class="valueField reflink">Loading Client<img src=".././images/navArrow.png"></img></span>
+			</div>
+			<div class="keyValue" id="Loan Number">
+			  <span class="keyField">Loan Number</span><span class="valueField">0000000</span>
+			</div>
+		  </div>
+
+	      <div class="detailSection hidedisable" id="propertyDetails">
+			<div class="headerLabel">Property Details</div>
+
+			<div class="keyValue" id="LockBox Code">
+			  <span class="keyField">LockBox Code</span><span class="valueField">00301002200</span>
+			</div>
+			<div class="keyValue" id="Asset Received">
+			  <span class="keyField">Asset Received</span><span class="valueField">01/20/2018</span>
+			  <span class="valueField reflink">01/14/2018 - 01/20/2018<img src=".././images/navArrow.png"></img></span>
+			</div>
+			<div class="keyValue" id="Budget">
+			  <span class="keyField">Budget</span><span class="valueField">40-50k</span>
+			</div>
+			<div id="Status" class="keyValue">
+			  <span class="keyField">Status</span><span class="valueField quickdrop">To Be Revisited<img src=".././images/expandarrow.png"></img></span>
+			</div>
+			<div id="Phase" class="keyValue">
+			  <span class="keyField">Phase</span><span class="valueField quickdrop">Phase 3<img src=".././images/expandarrow.png"></img></span>
+			</div>
+		  </div>
+
+		<!-- <div class="headerLabel ">Property Jobs</div> -->
+		  <div class="detailSection" id="propertyRefs">
+			<div id="coWrapper">
+				<div class="jobList unavail quickdrop" id="contractorRef">
+					<span><label>Contractor</label><span><img class="expand unavail" src=".././images/expandarrow.png"></img>
+				</div>
+					<select id='co_dropdown' class="refDropdown hidedisable"></select>
+			</div>
+			<div id="workOrderWrapper">
+				<div class="jobList unavail quickdrop" id="workOrder">
+					<span><label>Work Order</label><span><img class="expand" src=".././images/expandarrow.png"></img>
+				</div>
+				<select id='wo_dropdown' class="refDropdown hidedisable"></select>
+			</div>
+			<div id="lastwrapper">
+				<div class="jobList unavail" id="repairRefs">
+					<img class="expand unavail" src=".././images/expandarrow.png"></img>
+				</div>
+			</div>
+		  </div>
+		</div>
+
+		      <div class="section_break clear"></div>
+
+          <!-- -------------------------------------------------------------------------------->
+          <!-- FLIPPING GALLERY -->
+
+          <!-- -------------------------------------------------------------------------------->
+
+		  <!------------------------------------------------------------------------------>
+      <!-- PHOTO SECTION (50% RIGHT Side -> current LG photo w/ optional dynamic dropdown gallery) -->
+      <div id="photo_section" class="hidedisable">
+        <!-- 30px width pinned left bar with default gallery/folder names (before/during/after) -->
+        <h2 id="photo_sectionLabel">Photo Section</h2>
+          <input class="fd1" id="photoupload1" type="file" accept=".png,.jpg,.JPG,.PNG" multiple style="display: none"/>
+          <div style="height:40px"></div>
+        <div id="photoPreviewDiv" class="standard_border clear">
+          <div id="photoPreviewContainer" class="clear">
+            <img src=".././images/multi-select.png" class="preview">
+          </div>
+        </div>
+        <!-- END Current Photo Pane -->
+        <!-- END buttonPanel -->
+
+      <!-- DROPDOWN SECTION -->
+      <div class="breakbar" class="standard_border"></div>
+
+
+
+
+      <div id="gallery_assortment">
+        <div class="view_photo_page gallery_container">
+          <!-- will extend the green of the photo_section
+                      slip this dropdown_gallery div slightly under the photo_section
+                      the width will be full
+                      the photo_section will not have a bottom-border
+                      this dropdown_gallery div will have a top border
+                      this will create the effect that the photo_section div expanded down and out through the page
+            -->
+
+          <div id="buttonPanel" class="buttonPanel">
+                <div id="photoButtons" class="buttonPanel">
+                  <button class="photoButtons" id="zoomIn" title="Gallery Zoom Level" onclick="zoomGallery('in')">
+                    <img src=".././images/ZoomInIconV1.png"></img>
+                  </button>
+                  <button class="photoButtons" id="zoomOut" title="Gallery Zoom Level" onclick="zoomGallery('out')">
+                    <img src=".././images/ZoomOutIconV1.png"></img>
+                  </button>
+              <button id="uploadPhoto" class="photoButtons" title="Upload Image(s)" ><img src=".././images/SubmitIconV1.png"></img></button>
+              <button id="movePhotos" class="photoButtons hidedisable" title="Move Photos" ><img src=".././images/DeleteIconV1.png"></img></button>
+
+                </div>
+                <!-- END photoButton Panel -->
+              </div>
+
+        <div id="gallery_wrapper" class="gallery_wrapper">
+          <div id="gallery_menu_wrap" class="gallery_menu_wrap">
+            <div id="gallery_menu" class="gallery_menu">
+              <button class="gallery_tab tab" id="before_tab" title="Before Photos of this Property" onclick="dropdown(this)">
+                BEFORE
+                <!-- <img src="images/word.png"></img> -->
+              </button>
+              <button class="gallery_tab tab" id="during_tab" title="During Photos of this Property" onclick="dropdown(this)">
+                DURING
+                <!-- <img src="images/word.png"></img> -->
+              </button>
+              <button class="gallery_tab tab" class="" id="after_tab" title="After Photos of this Property" onclick="dropdown(this)">
+                AFTER
+                <!-- <img src="images/word.png"></img> -->
+              </button>
+              <button class="gallery_tab tab last_tab" id="broker_tab" title="After Photos of this Property" onclick="dropdown(this)">
+                BROKER
+                <!-- <img src="images/word.png"></img> -->
+              </button>
+            </div>
+          </div>
+
+              <div id="dropdown_gallery" class="dropdown_gallery dragContainer" title='Drag & Drop Image Section'>
+            <div class="dropdown_wrapper">
+              <label class="dragdrop_label">Drag Images into the Gallery to Upload></label>
+            </div>
+
+                <!-- - ("selecting" an image from the gallery would normally update the preview with that image) -->
+              </div>
+              <!--END dropdown_gallery-->
+
+              <div id="galleryDrag" class="galleryDrag" draggable="true" class="dragBar">
+                <img id="dragIDicon" class="dragIDicon" src=".././images/expandarrow.png"><img>
+              </div>
+              <div class="breakbar" class="standard_border"></div>
+          </div>
+        </div>
+
+        <div class="view_photo_page gallery_container">
+          <!-- will extend the green of the photo_section
+                      slip this dropdown_gallery div slightly under the photo_section
+                      the width will be full
+                      the photo_section will not have a bottom-border
+                      this dropdown_gallery div will have a top border
+                      this will create the effect that the photo_section div expanded down and out through the page
+            -->
+
+          <div id="buttonPanel" class="buttonPanel">
+                <div id="photoButtons" class="buttonPanel">
+                  <button class="photoButtons" id="zoomIn" title="Gallery Zoom Level" onclick="zoomGallery('in')">
+                    <img src=".././images/ZoomInIconV1.png"></img>
+                  </button>
+                  <button class="photoButtons" id="zoomOut" title="Gallery Zoom Level" onclick="zoomGallery('out')">
+                    <img src=".././images/ZoomOutIconV1.png"></img>
+                  </button>
+              <button id="uploadPhoto" class="photoButtons" title="Upload Image(s)" ><img src=".././images/SubmitIconV1.png"></img></button>
+              <button id="movePhotos" class="photoButtons hidedisable" title="Move Photos" ><img src=".././images/DeleteIconV1.png"></img></button>
+
+                </div>
+                <!-- END photoButton Panel -->
+              </div>
+
+        <div id="gallery_wrapper" class="gallery_wrapper">
+          <div id="gallery_menu_wrap" class="gallery_menu_wrap">
+            <div id="gallery_menu" class="gallery_menu">
+              <button class="gallery_tab tab" id="before_tab" title="Before Photos of this Property" onclick="dropdown(this)">
+                BEFORE
+                <!-- <img src="images/word.png"></img> -->
+              </button>
+              <button class="gallery_tab tab" id="during_tab" title="During Photos of this Property" onclick="dropdown(this)">
+                DURING
+                <!-- <img src="images/word.png"></img> -->
+              </button>
+              <button class="gallery_tab tab" class="" id="after_tab" title="After Photos of this Property" onclick="dropdown(this)">
+                AFTER
+                <!-- <img src="images/word.png"></img> -->
+              </button>
+              <button class="gallery_tab tab last_tab" id="broker_tab" title="After Photos of this Property" onclick="dropdown(this)">
+                BROKER
+                <!-- <img src="images/word.png"></img> -->
+              </button>
+            </div>
+          </div>
+
+              <div id="dropdown_gallery" class="dropdown_gallery dragContainer" title='Drag & Drop Image Section'>
+            <div class="dropdown_wrapper">
+              <label class="dragdrop_label">Drag Images into the Gallery to Upload></label>
+            </div>
+
+                <!-- - ("selecting" an image from the gallery would normally update the preview with that image) -->
+              </div>
+              <!--END dropdown_gallery-->
+
+              <div id="galleryDrag" class="galleryDrag" draggable="true" class="dragBar">
+                <img id="dragIDicon" class="dragIDicon" src=".././images/expandarrow.png"><img>
+              </div>
+              <div class="breakbar" class="standard_border"></div>
+          </div>
+        </div>
+
+          <div id="gallery_container" class="view_photo_page gallery_container">
+            <!-- will extend the green of the photo_section
+                        slip this dropdown_gallery div slightly under the photo_section
+                        the width will be full
+                        the photo_section will not have a bottom-border
+                        this dropdown_gallery div will have a top border
+                        this will create the effect that the photo_section div expanded down and out through the page
+              -->
+
+            <div id="buttonPanel" class="buttonPanel">
+                  <div id="photoButtons" class="buttonPanel">
+                    <button class="photoButtons" id="zoomIn" title="Gallery Zoom Level" onclick="zoomGallery('in')">
+                      <img src=".././images/ZoomInIconV1.png"></img>
+                    </button>
+                    <button class="photoButtons" id="zoomOut" title="Gallery Zoom Level" onclick="zoomGallery('out')">
+                      <img src=".././images/ZoomOutIconV1.png"></img>
+                    </button>
+                <button id="uploadPhoto" class="photoButtons" title="Upload Image(s)" ><img src=".././images/SubmitIconV1.png"></img></button>
+                <button id="movePhotos" class="photoButtons hidedisable" title="Move Photos" ><img src=".././images/DeleteIconV1.png"></img></button>
+
+                  </div>
+                  <!-- END photoButton Panel -->
+                </div>
+
+          <div id="gallery_wrapper" class="gallery_wrapper">
+            <div id="gallery_menu_wrap" class="gallery_menu_wrap">
+              <div id="gallery_menu" class="gallery_menu">
+                <button class="gallery_tab tab" id="before_tab" title="Before Photos of this Property" onclick="dropdown(this)">
+                  BEFORE
+                  <!-- <img src="images/word.png"></img> -->
+                </button>
+                <button class="gallery_tab tab" id="during_tab" title="During Photos of this Property" onclick="dropdown(this)">
+                  DURING
+                  <!-- <img src="images/word.png"></img> -->
+                </button>
+                <button class="gallery_tab tab" class="" id="after_tab" title="After Photos of this Property" onclick="dropdown(this)">
+                  AFTER
+                  <!-- <img src="images/word.png"></img> -->
+                </button>
+                <button class="gallery_tab tab last_tab" id="broker_tab" title="After Photos of this Property" onclick="dropdown(this)">
+                  BROKER
+                  <!-- <img src="images/word.png"></img> -->
+                </button>
+              </div>
+            </div>
+
+                <div id="dropdown_gallery" class="dropdown_gallery dragContainer" title='Drag & Drop Image Section'>
+              <div class="dropdown_wrapper">
+                <label class="dragdrop_label">Drag Images into the Gallery to Upload></label>
+              </div>
+
+                  <!-- - ("selecting" an image from the gallery would normally update the preview with that image) -->
+                </div>
+                <!--END dropdown_gallery-->
+
+                <div id="galleryDrag" class="galleryDrag" draggable="true" class="dragBar">
+                  <img id="dragIDicon" class="dragIDicon" src=".././images/expandarrow.png"><img>
+                </div>
+                <div class="breakbar" class="standard_border"></div>
+            </div>
+          </div>
+      </div>
+
+<!-- -------------------------------------------------------------------------------->
+
+      <div id="dragBuffer" class="dragBuffer"></div>
+      <div class="breakbar" class="standard_border"></div>
+    </div>
+    <!--
+    END main_top SECTION WRAPPER
+    -->
+<!-- -------------------------------------------------------------------------------->
+
+
+    </div>
+</div>
+    <script src="/socket.io/socket.io.js"></script>
+	<!-- <script src="js/layouts/property_rows.js"></script> -->
+    <script src=".././js/layouts/loadProperties.js"></script>
+    <script src=".././js/layouts/expansions.js"></script>
+		    <script src=".././js/gallery_drag.js"></script>
+    <script src=".././js/buttonhandles.js"></script>
+    <script src=".././js/utilities.js"></script>
+    <script src=".././js/layouts/popups.js"></script>
+    <script src=".././js/layouts/propertyPage_lazy.js"></script>
+
+    <link  href=".././css/layouts/viewer.css" rel="stylesheet">
+	<script src=".././js/layouts/main_viewer.js"></script>
+    <script src=".././js/layouts/viewer.js"></script>
+    <script src=".././js/splitGallery.js"></script>
+    <script src=".././js/imageHandles.js"></script>
+
+
+    <script type="text/javascript" src=".././css/flipping/jquery.lazy.min.js"></script>
+
+    <!-- <link  href=".././css/flipping/flipping_gallery.css" rel="stylesheet">
+    <script src=".././css/flipping/jquery.flipping_gallery.js"></script>
+    <script src=".././css/flipping/jquery.flipping_gallery.min.js"></script> -->
+</body>
+
+    <script>
+    initializeListeners = function(e){
+    	console.log('INITIALIZE Listeners!! ""', e);
+
+
+        alignDetails();
+        // collect all image buttons and add Event Listeners for mouse movements
+        <!-- document.getElementById('uploadPhoto').addEventListener('click', addThumbnail); -->
+        document.getElementById('details').addEventListener('click', function(e){
+        		var detailN = window.location.href.replace('/upload/', '/details/');
+        		console.log('details pane clicked: ', detailN);
+        		window.location.href = detailN;
+    	  });
+
+        document.getElementById('myProperties').addEventListener('click', function(e){
+          document.getElementById('search').click();
+        });
+
+
+          // vertically align the values to the keys that are multi-line:
+
+    };
+    </script>
+</html>

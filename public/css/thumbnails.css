@@ -1,0 +1,138 @@
+:root{
+  --sq_length: 335px;
+  --gallery_margin_factor: 2px;
+  --minwidth: 750px;
+  --standard_buttonHT: 40px;
+  --thumbnail_length: 80px;
+  --dragHeight: 8px;
+}
+
+.testButton{
+  float: right;
+  width: var(--standard_buttonHT);
+  position: relative;
+  top: calc(0px - var(--standard_buttonHT) - var(--standard_Padding));
+}
+
+.thumbWrap{
+  display: table;
+  overflow-x: none;
+  width: 100%;
+  height: auto;
+  border: var(--standard_border);
+}
+
+.thumbnail{
+  clear: both;
+  display: inline-table;
+  /* min-width: 80px; */
+  width: var(--thumbnail_length);
+  max-height: var(--thumbnail_length);
+  background-color: lightblue;
+  margin: 3px;
+  height: auto;
+}
+
+.thumbnail img{
+  display: flex;
+  flex-direction: column;
+  justify-content: middle;
+  vertical-align: middle;
+  width: 90%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.spacer{
+  clear: both;
+  display: inline-block;
+  width: var(--gallery_margin_factor);
+}
+.dragBar{
+  clear: both;
+  width: 100%;
+  height: var(--dragHeight);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  cursor: row-resize;
+  text-align: center;
+  font-size: 10px;
+}
+.dragBar:hover{
+  background-color: white;
+  opacity: .5;
+}
+
+#dropdown_gallery{
+  clear: both;
+  display: inline-table;
+}
+#dropdown_gallery.fixed{
+  /* display: table; */
+  overflow: auto;
+}
+#dropdown_gallery:not(.fixed){
+  height: calc(var(--thumbnail_length) + var(--gallery_margin_factor)*4);
+}
+#dragBuffer{
+  clear: both;
+  background-color: Transparent;
+  margin-bottom: 30px;
+}
+
+/*
+  #photoPreviewDiv must be display type "table":
+    Otherwise, the "overflow" property does not auto-adjust the div's Height
+    w/ the height of the image inside it.
+    - [display:table, overflow:auto] --> auto adjust height
+    - [display:flex, overflow:auto, ] --> ignores bottom content, but can vertically align
+
+  Place a new div inside #photoPreviewDiv that will hold the image
+    ??
+*/
+#photoPreviewContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+#photoPreviewDiv{
+  width: 100%;
+  display: table;
+  overflow: auto;
+  height: var(--sq_length);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.preview{
+  vertical-align: middle;
+  min-width: calc(var(--sq_length) - var(--standard_Padding)*6);
+}
+
+/*
+  absolute center the image
+*/
+#photoPreviewDiv img{
+  width: 99%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.clear{
+  clear: both;
+}
+
+.thumbaction{
+  height: 100%;
+  width: 20px;
+}
+.thumb-action img{
+  height: 100%;
+  width: 100%;
+}

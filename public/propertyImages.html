@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <title>Property Uploads</title>
+
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/propertyLayout.css">
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/rootCSS.css">
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/propertyImages.css">
+      <link href="../.././branding/cstr-ico.ico" rel="icon" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/detailExpansions.css">
+      <script src=".././js/libs/jquery.3.1.1.min.js"></script>
+      <link href="https://transloadit.edgly.net/releases/uppy/v0.23.2/dist/uppy.min.css" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+      <link href="jquery.inputpicker.css" rel="stylesheet">
+      <!-- <script src="//code.jquery.com/jquery-3.2.1.min.js"></script> -->
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/table.css">
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/tagselection.css">
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/photo_type.css">
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/taglist.css">
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/grid_page1.css">
+      <link rel="stylesheet" type="text/css" href=".././css/layouts/gallery_notifs.css">
+      <script src="../js/libs/jquery.inputpicker.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.4/css/fixedColumns.dataTables.min.css">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/3.3.0/caman.full.min.js"></script>
+      <link rel="stylesheet" type="text/css" href=".././branding/constructive.css">
+
+      <!-- <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script> -->
+    </head>
+  <body style="padding-top: 5px; margin-top:5px;" onload="initializePage(this)">
+    <a name="top"></a>
+<div id="page_wrapper">
+<!-- -------------------------------------------------------------------------------->
+    <div id="property_section" class="centered" style="padding-top: 0px; margin-top: 0px">
+
+      <button id="homePage" class="hidedisable">All Properties</button>
+      <button id="details" class="hidedisable">details</button>
+      <button id="SplitView" class="hidedisable">SplitView</button>
+      <button id="myProperties" class="hidedisable">My Properties</button>
+
+
+		<!-- <div id="searchBarContainer">
+      <img id="homeImage" src=".././images/ARC_LOGO.png" title="All Properties" class="homeSearch"></img>
+      <img src=".././images/search_icon.png"></img>
+      <input type="text" id="searchbar"></input>
+      <div class="coloredSearch"></div>
+		</div> -->
+
+    <div id="searchSection" style="height: 100px;">
+      <span id="searchSum" class="hidedisable" placeholder = "..."></span>
+      <div id="searchDetails" class="hidedisable"></div>
+      <div id="searchBarContainer">
+            <!-- <img src=".././images/search_icon.png"><img> -->
+               <input type="text" id="searchbar" class="hidedisable"></input>
+               <img id="homeImage" src=".././branding/brand.png" title="All Properties" class="homeSearch"></img>
+               <img id="magGlass" src=".././images/search_icon.png"><img>
+
+               <div class="select2_contain">
+                 <select id="property_select2" class="">
+                 </select>
+               </div>
+               <!-- <img src=".././images/search_icon.png"><img> -->
+      </div>
+    </div>
+    <div class="section_break" style="clear:both"></div>
+
+    <div class="section_break" style="clear:both"></div>
+		<div class="clear"></div>
+		<div id="property_dropdownContainer" class="">
+		</div>
+
+      <!-- <div class="property_results" id="propBreak">
+        <div class="property_item">
+        </div>
+      </div> -->
+
+      <div class="section_break"></div>
+
+
+
+      <div class="section_break"></div>
+	  <div id="detailsContainer">
+
+      <div class="detailsGridWrap">
+        <div id="propertyLabel" class="headerLabel divmiddle">Loading Property Address <span id="clientSpan">clientName</span></div>
+
+        <div id="property_grid">
+            <div id='status_grid' class='field_grid'>
+              <div class="center_vert"><img src=".././images/status_icon.png"></img></div>
+              <div class="field_label"><label>STATUS</label></div>
+              <div class="field_value"><label>Status Name</label></div>
+            </div>
+
+            <div id='phase_grid' class='field_grid'>
+              <div class="center_vert"><img src=".././images/phase_icon.png"></img></div>
+              <div class="field_label"><label>PHASE</label></div>
+              <div class="field_value"><label>Phase Name</label></div>
+            </div>
+
+            <div id='am_grid' class='field_grid'>
+              <div class="center_vert"><img src=".././images/manager_icon.png"></img></div>
+              <div class="field_label"><label>Asset Manager</label></div>
+              <div class="field_value"><label>AM NAME</label></div>
+            </div>
+
+            <div id='broker_grid' class='field_grid'>
+              <div class="center_vert"><img src=".././images/broker_icon.png"></img></div>
+              <div class="field_label"><label>Broker</label></div>
+              <div class="field_value"><label>Broker Name</label></div>
+            </div>
+        </div>
+      </div> <!-- * nd detailsGrid Container Wrap -->
+		<!-- <div class="headerLabel ">Property Jobs</div> -->
+    <div id="" class="endContainer section_break clear" style="margin-top: 10px; width:100%; margin-bottom: 10px;"></div>
+
+
+
+
+    <div class="section_break"></div>
+
+    <!-- WRAP BODY ELEMENTS FOR GRID LAYOUT -->
+    <div id="body_wrapper">
+      <div class="leftside_grid">
+
+        <div id="photo_type">
+            <div class="folderTagDIV" style="box-shadow: 0px 3px 2px var(--grey);">
+                <div class="folderTag listHeader" style="" id="generalTag">
+                  <input id="brokerCheck" name="brokerCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                  <div class="innerFolderTag"><label>PHOTO TYPE</label></div>
+                </div>
+                <div id="folder_list_wrap" class="list_wrapper hidedisable">
+                  <div class="detailSection hidedisable" id="folderRefs">
+                    <table id="folder_table" class="inline_refs display nowrap responsive" width="100%">
+                      <thead>
+                          <tr>
+                              <th data-priority="1">Folder</th>
+                              <th>Description</th>
+                              <th>Count</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td></td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td></td>
+                              <td></td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  </div>
+                </div>
+
+            </div>
+          <!-- </div> -->
+        </div>
+
+        <div id="" class="endContainer section_break clear" style=""></div>
+
+
+        <div id="timeselection">
+          <div class="folderTagDIV" style="box-shadow: 0px 3px 2px var(--grey);">
+              <div class="folderTag listHeader" style="" id="">
+                <input id="brokerCheck" name="brokerCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                <div class="innerFolderTag"><label>TIME PERIOD</label></div>
+              </div>
+              <div id="folder_list_wrap" class="list_wrapper hidedisable">
+                <div class="detailSection hidedisable" id="folderRefs">
+                  <table id="folder_table" class="inline_refs display nowrap responsive" width="100%">
+                    <thead>
+                        <tr>
+                            <th data-priority="1">Folder</th>
+                            <th>Description</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+              </div>
+
+          </div>
+      </div>
+
+      <div id="" class="endContainer section_break clear" style=""></div>
+
+        <div id="tag_selection" class="unavail">
+          <div class="folderTag listHeader" style="" id="">
+            <input id="brokerCheck" name="brokerCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+            <div class="innerFolderTag"><label>TAG LIST</label>
+              <div id="tagsearch_wrapper">
+                <div id="tag_search">
+                  <input type="text" class="" placeholder="Search or Add Tags" id="tagsearchtext"></input>
+                  <img src=".././images/search_icon.png"></img>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="listwrap_outer">
+
+          </div>
+        </div>
+
+      </div> <!-- end LEFTSIDE -->
+
+
+
+      <div id="rightside_grid">
+        <div id="job_selection">
+          <div class="folderTagDIV">
+              <div class="folderTag" style="" id="jobsTag">
+                <input id="jobCheck" name="jobCheckbox" class="checkboxClass hiddenCheck" type="checkbox" value="Select All"/>
+                <div class="innerFolderTag"><label>JOB SELECTION</label></div>
+              </div>
+          </div>
+
+
+          <div id="propertyRefs_Wrap" class="list_wrapper">
+            <div class="detailSection hidedisable" id="propertyRefs">
+              <div id="jobsLabel" class="jobsLabel">
+                <h2 style="padding-left: 5px; margin-top: 0px; margin-bottom: 10px">Job Selection</h3>
+              </div>
+
+              <table id="wo_table" class="inline_refs display nowrap responsive" width="100%">
+                <thead>
+                    <tr>
+                        <th data-priority="1">Contractor</th>
+                        <th data-prioirty="2">Amount</th>
+                        <th>Date1</th>
+                        <th>Date</th>
+                        <th class="statusClass">Status</th>
+                        <th class="firstColumn">WO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+          </div>
+          <div class="breakbar" class="standard_border"></div>
+
+        </div>
+
+
+
+
+        <div id="photo_wrapper">
+          <div id="folderSelection">
+            <div id="folder_list_wrap" class="list_wrapper hidedisable">
+
+              <div id="secondarySelection" class="hidedisable">
+                <div class="folderTagDIV">
+                    <div class="folderTag" id="bpoTag">
+                      <input id="BPOcheck" name="brokerCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                      <div class="innerFolderTag"><label>BPO</label></div>
+                    </div>
+                </div>
+                <div class="folderTagDIV">
+                    <div class="folderTag" id="sellAsTag">
+                        <input id="" name="jobCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                        <div class="innerFolderTag"><label>Sell As Is</label></div>
+                    </div>
+                </div>
+                <div class="folderTagDIV">
+                    <div class="folderTag" id="jobsTag">
+                      <input id="" name="jobCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                      <div class="innerFolderTag"><label>Initial Walkthrough</label></div>
+                    </div>
+                </div>
+                <div class="folderTagDIV">
+                    <div class="folderTag" id="jobsTag">
+                      <input id="" name="jobCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                      <div class="innerFolderTag"><label>AM Sale</label></div>
+                    </div>
+                </div>
+                <div class="folderTagDIV">
+                    <div class="folderTag" id="jobsTag">
+                      <input id="" name="jobCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                      <div class="innerFolderTag"><label>Inspection Photos</label></div>
+                    </div>
+                </div>
+                <div class="folderTagDIV">
+                    <div class="folderTag invalidTag" id="jobsTag">
+                      <input id="" name="jobCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                      <div class="innerFolderTag"><label>AM Sale</label></div>
+                    </div>
+                </div>
+                <div class="folderTagDIV">
+                    <div class="folderTag invalidTag" id="jobsTag">
+                      <input id="" name="jobCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                      <div class="innerFolderTag"><label>AM Sale</label></div>
+                    </div>
+                </div>
+                <div class="folderTagDIV">
+                    <div class="folderTag invalidTag" id="jobsTag">
+                      <input id="" name="jobCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                      <div class="innerFolderTag"><label>AM Sale</label></div>
+                    </div>
+                </div>
+                <div class="folderTagDIV">
+                    <div class="folderTag invalidTag" id="jobsTag">
+                      <input id="" name="jobCheckbox" class="checkboxClass" type="checkbox" value="Select All"/>
+                      <div class="innerFolderTag"><label>Broker QC</label></div>
+                    </div>
+                </div>
+              </div>
+            </div> <!-- END FOLDER LIST WRAPPER -->
+
+              <div id="selectedFolder" class="hidedisable">
+                <div class="folderTagDIV">
+                    <div class="folderTag" id="brokerTag"><label>BROKER</label></div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+              <div class="breakbar hidedisable" class="standard_border" style="margin-top: 15px; margin-bottom: 10px; border-bottom: 0px; border-top: 1px var(--lightgrey) solid"></div>
+
+            <div class="folderTagDIV">
+              <div class="folderTag list_wrapper hidedisable" style="" id="photosBar">
+                <div class="innerFolderTag"><h4 id="photo_sectionLabel">PHOTO SECTION</h4></div>
+                <div id="buttonPanel" class="buttonPanel">
+                    <div id="photoButtons" class="buttonPanel">
+                      <button class="photoButtons" id="zoomIn" title="Gallery Zoom Level" onclick="zoomGallery('in')">
+                        <img src=".././images/ZoomInIconV1.png"></img>
+                      </button>
+                      <button class="photoButtons" id="zoomOut" title="Gallery Zoom Level" onclick="zoomGallery('out')">
+                        <img src=".././images/ZoomOutIconV1.png"></img>
+                      </button>
+                      <button id="uploadPhoto" class="photoButtons" title="Upload Image(s)" ><img src=".././images/SubmitIconV1.png"></img></button>
+                      <button id="downloadPhotos" class="photoButtons hidedisable clear" title="Download Images" ><img src=".././images/download_btn.png"></img></button>
+                      <button id="editPhotos" class="photoButtons hidedisable" title="Rotate Photos" ><img src=".././images/rotate-icon.png"></img></button>
+                      <button id="movePhotos" class="photoButtons hidedisable" title="Move Photos" ><img src=".././images/MoveIconV1.png"></img></button>
+                      <button id="deletePhotos" class="photoButtons hidedisable" title="Delete Photos" ><img src=".././images/DeleteIconV1.png"></img></button>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="folderTagDIV">
+                <div class="folderTag hidedisable" id="photosBody">
+                  <div class="fillerdiv hidedisable"> </div>
+                  <div id="photo_section" class="hidedisable list_wrapper">
+                        <!-- 30px width pinned left bar with default gallery/folder names (before/during/after) -->
+                        <!-- <div class="section_break clear" style="width:100%"></div> -->
+                        <!-- <h2 id="photo_sectionLabel">Photo Section</h2> -->
+                          <input class="fd1" id="photoupload1" type="file" accept=".png,.jpg,.JPG,.PNG" multiple style="display: none"/>
+                        <div id="photoPreviewDiv" class="standard_border clear">
+                          <div id="photoPreviewContainer" class="clear">
+                            <img src=".././images/multi-select.png" class="preview">
+                          </div>
+                        </div>
+                        <!-- END Current Photo Pane -->
+                        <!-- END buttonPanel -->
+
+                      <!-- DROPDOWN SECTION -->
+                      <div class="breakbar" class="standard_border"></div>
+
+                      <div class="galleryHandles">
+                        <h2 id="photo_sectionLabel">Photo Section</h2>
+
+                        <div class="rightside_grid">
+                        </div>
+                      </div>
+
+
+                      <div id="gallery_container" class="view_photo_page">
+                        <!-- will extend the green of the photo_section
+                                    slip this dropdown_gallery div slightly under the photo_section
+                                    the width will be full
+                                    the photo_section will not have a bottom-border
+                                    this dropdown_gallery div will have a top border
+                                    this will create the effect that the photo_section div expanded down and out through the page
+                          -->
+
+
+                    <div id="gallery_wrapper">
+                      <div id="selectAllDiv">
+                        <label for="galleryCountFor" class="" id="galleryCount">0 Images</label>
+                        <div class="checkbox_container clear">
+                            <label for="selectAllCheckbox" class="selectAll reserverClass" id="selectLabel">Select All</label>
+                            <input id="selectAllCheckbox" name="selectAllCheckbox" class="selectAll reserverClass" type="checkbox" value="Select All"/>
+                        </div>
+                      </div>
+                      <div id="gallery_menu_wrap">
+                        <div id="gallery_menu" class="hidedisable">
+                          <button class="tab button_tab folderTag" id="before_tab" title="Before Photos of this Property" onclick="dropdown(this)">
+                            BEFORE
+                          </button>
+                          <button class="tab button_tab folderTag" id="during_tab" title="During Photos of this Property" onclick="dropdown(this)">
+                            DURING
+                          </button>
+                          <button class="tab button_tab folderTag last_tab" class="" id="after_tab" title="After Photos of this Property" onclick="dropdown(this)">
+                            AFTER
+                          </button>
+                          <button class="tab button_tab last_tab hidedisable" id="broker_tab" title="After Photos of this Property" onclick="dropdown(this)">
+                            BROKER
+                          </button>
+                        </div>
+                      </div>
+                      <div id="gallery_assortment">
+                          <div id="uppy_component_wrapper">
+                            <div id="uppy_drag" style="display:grid"></div>
+                          </div> <!-- end uppy_component_wrapper -->
+
+
+                          <div style="border-width:0px; background-color: var(--highlightrgb_Opaque); min-height: 3px; z-index:109; position:relative"></div>
+                          <div id="dropdown_gallery" class="dragContainer" title='Drag & Drop Image Section'>
+
+                            <div id="dropdown_wrapper">
+                              <label id="dragdrop_label">Drag Images into the Gallery to Upload></label>
+                              <div id="multiSelect_options">
+                                <button class="photoButtons" id="zn" title="Gallery Zoom Level" onclick="zoomGallery('in')">
+                                  <img src=".././images/zoomIn.png"></img>
+                                </button>
+                                <button class="photoButtons" id="zO" title="Gallery Zoom Level" onclick="zoomGallery('out')">
+                                  <img src=".././images/zoomOut.png"></img>
+                                </button>
+                                <button id="hoto" class="photoButtons" title="Upload Image(s)" ><img src=".././images/uploadIcon.png"></img></button>
+                              </div>
+                            </div>
+
+                                <!-- - ("selecting" an image from the gallery would normally update the preview with that image) -->
+                          </div>
+                          <!--END dropdown_gallery-->
+
+                          <div id="galleryDrag" draggable="true" class="dragBar">
+                            <img id="dragIDicon" src=".././images/expandarrow.png"><img>
+                          </div>
+                        </div> <!--End gallery_assortment*/-->
+                        <div class="breakbar" class="standard_border"></div>
+                      </div>
+                  </div>
+
+                <!-- -------------------------------------------------------------------------------->
+
+                      <div id="dragBuffer"></div>
+                      <div class="breakbar" class="standard_border"></div>
+                </div> <!-- end Photo Section DIV -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div> <!-- end RIGHTSIDE_GRID -->
+
+
+
+
+    </div>
+
+		</div>
+
+    <!-- <input class="form-control" id="demo" value="jQuery"> -->
+
+          <div class="section_break clear"></div>
+
+          <!-- -------------------------------------------------------------------------------->
+          <!-- FLIPPING GALLERY -->
+
+          <!-- -------------------------------------------------------------------------------->
+
+		  <!------------------------------------------------------------------------------>
+      <!-- PHOTO SECTION (50% RIGHT Side -> current LG photo w/ optional dynamic dropdown gallery) -->
+
+    <!--
+    END main_top SECTION WRAPPER
+    -->
+<!-- -------------------------------------------------------------------------------->
+
+    <!-- UPPY UPLOADER -->
+      <input type="file" multiple="true" name="uppy_upload" id="uppy_upload" class="hidedisable"></input>
+
+    </div>
+</div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://transloadit.edgly.net/releases/uppy/v0.23.2/dist/uppy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+	<!-- <script src="js/layouts/property_rows.js"></script> -->
+    <script src=".././js/layouts/loadProperties.js"></script>
+    <script src=".././js/layouts/tagging.js"></script>
+    <script src=".././js/layouts/expansions.js"></script>
+    <script src=".././js/layouts/photo_type.js"></script>
+    <script src=".././js/layouts/timeselection.js"></script>
+    <script src=".././js/layouts/tag_init.js"></script>
+    <script src=".././js/gallery_drag.js"></script>
+
+    <script src=".././js/uploads/uppyHandles.js"></script>
+    <script src=".././js/uploads/uploadEmail.js"></script>
+
+    <script src=".././js/buttonhandles.js"></script>
+    <script src=".././js/utilities.js"></script>
+    <script src=".././js/layouts/popups.js"></script>
+    <script src=".././js/layouts/propertySearchbar.js"></script>
+
+    <script src=".././js/layouts/propertyPage.js"></script>
+
+
+    <link  href=".././css/layouts/viewer.css" rel="stylesheet">
+    <link  href=".././css/layouts/popouts.css" rel="stylesheet">
+    <link  href=".././css/layouts/popout_selections.css" rel="stylesheet">
+	  <script src=".././js/layouts/main_viewer.js"></script>
+    <script src=".././js/layouts/viewer.js"></script>
+    <script src=".././js/multiselect.js"></script>
+    <script src=".././js/thumbnails.js"></script>
+    <script src=".././js/gallery.js"></script>
+    <script src=".././js/imageHandles.js"></script>
+    <script src=".././js/clock.js"></script>
+    <script src=".././js/gallery_notifs.js"></script>
+    <script src=".././js/gallery_actions.js"></script>
+    <script src=".././js/gallery_move.js"></script>
+    <script src=".././js/gallery_deletes.js"></script>
+
+
+    <script type="text/javascript" src=".././css/flipping/jquery.lazy.min.js"></script>
+
+    <!-- DataTables Scripts -->
+    <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.4/js/dataTables.fixedColumns.min.js"></script>
+    <!-- <link  href=".././css/flipping/flipping_gallery.css" rel="stylesheet">
+    <script src=".././css/flipping/jquery.flipping_gallery.js"></script>
+    <script src=".././css/flipping/jquery.flipping_gallery.min.js"></script> -->
+</body>
+
+
+    <script>
+    // function fetchPropertyu
+    var activeOrders = [];
+    var fileTemp;
+    console.log('\n\nTEMP STORAGE USER DETECTED !');
+    var propHeader = document.getElementById('propertyLabel');
+    var anis = startLoadAnimation(propHeader, 'Loading Property Address');
+    initializeListeners = function(e){
+      console.log('INITIALIZE Listeners!! ""', e);
+      $('#property_select2').select2({
+        placeholder: "Search for a Property"
+      });
+        alignDetails();
+    };
+
+    	initializePage = function(){
+        console.log('\n\nInitializePage!');
+    		initializeSearchBar(null);
+    		initializeNavigation(null);
+
+    		$.ajax({
+    			type:'GET',
+    			dataType: "json",
+    			contentType: "application/json",
+    			url: decodeURIComponent(pathid),
+    			success: function(successresult){
+    				console.log('Successful GET request!\nUser Data Retreived');
+    				setUserType(successresult.userType);
+    				if(successresult.userType === "Contractor"){
+    					document.getElementById('body_wrapper').classList.add('contractor');
+    					document.getElementsByClassName('leftside_grid')[0].classList.add('hidedisable');
+    					document.getElementById('selectAllDiv').classList.add('contractor');
+    				}
+            setUserEmail(successresult.userEmail);
+            setUserProxy(successresult.userProxy);
+    				callTagDetail(successresult.Property_key);
+
+    				setFolderSelection(successresult.properties);
+
+    				console.log('\n\nget UserType: ', getUserType());
+    				loadProperty(successresult);
+
+    				// initialize IMAGE-ACTION functions
+    				initDownloadListener();
+    				initRotateListener();
+    				initMoveListener();
+            // this.activeOrders = null;
+    				if(successresult.workOrders){
+    					console.log('Loading work_orders');
+    					this.activeOrders = successresult.workOrders;
+    					var woLoaded = loadWorkOrders(successresult.workOrders);
+    					// console.log('Work Orders returned from fetch property process: ');
+    				}else{
+    					console.log('\n\nLoading Workorders --- NO WORK ORDERS FOUND!');
+    					this.activeOrders = [];
+    				}
+    			},
+    			error: function(errResult){
+    				console.log('FAILED GET request\n\tError : \n', errResult);
+    			}
+    		});
+    	}();
+    // initializeListeners = function(e){
+    // 	console.log('INITIALIZE Listeners!! ""', e);
+    //   $('#property_select2').select2({
+    //     placeholder: "Search for a Property"
+    //   });
+    //     alignDetails();
+    // };
+    // collectProperties(searchURL);
+    </script>
+</html>

@@ -1,0 +1,200 @@
+.expansion{
+  clear:both;
+  display: table;
+  background-color: var(--themeColorLight);
+  border: var(--standard_border);
+  border-color: var(--bgColorDark2);
+  margin: 15px auto;
+  width: 90%;
+  min-height: 200px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px var(--bgColorDark1) inset;
+  padding: 10px;
+}
+
+.phases div:not(.selected){
+  background-color: var(--bgColorLight);
+  border: var(--standard_border);
+  border-color: gainsboro;
+  width: calc(100%-2px);
+}
+
+.phases, #property_dropdown{
+  font-size: 80%;
+  color: var(--fontDisabled);
+  border: var(--standard_border);
+  background-color: var(--bgColorLight);
+  width: 90%;
+  margin: 0px auto;
+    min-height: 10px;
+	display:table;
+  border-radius: 2px;
+  /* height: ; */
+}
+
+.phases .highlight{
+	background-color: pink;
+}
+
+.refDropdown{
+	position: relative;
+	top:-10px;
+	min-height: 40px;
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: var(--detailSection_ht);
+}
+.refDropdown option{
+    padding: 6px;
+    padding-top: 12px;
+    padding-left: 20px;
+    height: 20px;
+    background-color: white;
+    border: 1px gainsboro solid;
+    box-shadow: 1px 1px 5px whitesmoke inset;
+}
+.refDropdown option:hover{
+    font-weight:bold;
+	cursor: pointer;
+	opacity: 0.8;
+    box-shadow: 1px 1px 5px gainsboro inset;
+}
+
+.contractorOption{
+	font-weight: bold;
+}
+.woOption{
+	font-size: 120%;
+}
+.unavail{
+	opacity: 0.5;
+	cursor: default !important;
+	pointer-events: none;
+}
+.unavail:hover, .unclickable:hover{
+	/* opacity: 0.5 !important; */
+	cursor: default !important;
+}
+.unclickable{
+	cursor: default !important;
+	opacity: 0.2 !important;
+  pointer-events: none;
+}
+
+.jobList label{
+	padding-top: 10px;
+    position: relative;
+    top: 6px;
+	/* font-weight: bold; */
+    margin-left: 10px;
+	opacity: 0.9;
+}
+
+#contractorRef label{
+	padding-top:10px;
+}
+.jobList label:not(span){
+	padding-left: 5px;
+}
+.workOrderVal, .contractorVal{
+	padding-left: 20px;
+	font-weight: initial;
+	color: var(--bgDarkColor2);
+}
+.contractorVal{
+	padding-left: 25px;
+}
+
+
+#searchbar{
+	display: block;
+	width: -webkit-fill-available;
+	height: 100%;
+	margin: 0px auto;
+	z-index: 50;
+	border: 0px solid lightgrey;
+	border-color: var(--themeColorDark);
+	/* box-shadow: 2px 2p 2px Transparent; */
+	border-radius: 2px;
+	outline-color: grey;
+		font-size: 110%;
+    padding-left: 45px !important;
+}
+#searchBarContainer img{
+	width: 35px;
+	float: right;
+	position: relative;
+	/* left: -40px; */
+	top:43px;
+	padding: 5px;
+	cursor: pointer;
+}
+#searchBarContainer img:active{
+	opacity: .5;
+	cursor: pointer;
+}
+
+#homeImage{
+  float: left !important;
+  top: 43px!important;
+}
+#homeImage:hover{
+  opacity: 0.5;
+}
+.phases, #searchbar, #search{
+  padding: 10px;
+}
+
+#searchBarContainer{
+	/* background-color: var(--bgColorLight); */
+	background-color: Transparent;
+	vertical-align: middle;
+	padding: 0px;
+	width: 93%;
+	margin: 0px auto;
+	margin-top: 10px;
+	z-index: 50;
+	border: 1px solid Transparent;
+	box-shadow: 2px 2p 2px Transparent;
+	border-radius: 2px;
+	outline-color: grey;
+	border-radius: 2px;
+}
+
+#property_dropdownContainer:not(.hidden){
+	display: block;
+}
+#property_dropdown{
+	margin: 0px auto;
+	z-index: 100;
+}
+.hidden{
+	display: none;
+}
+#property_dropdown option{
+	width: 90%;
+	margin: 0 auto;
+}
+.phases:not(.selected){
+  border-color: var(--bgColorDark1);
+}
+.phases .selected{
+  border-color: var(--bgColorDark2);
+}
+.selected span{
+  font-weight: bold;
+  font-size: 100%;
+}
+.phases:hover{
+  cursor:pointer;
+  opacity: 0.8;
+  box-shadow: 1px 1px 1px grey;
+}
+
+.phaseField{
+  float: left;
+}
+.phaseDate{
+  float: right;
+}
