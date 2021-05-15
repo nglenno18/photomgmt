@@ -1,7 +1,17 @@
 {
 "development":{
   "QUOTAGUARD_STATIC_URL": "QuoteGuard Static Proxy URL (Routes traffic from Heroku to DB through Whitelisted Proxy IPs)",
-  "DB_URI":"MONGO_DB Variable",
+  "DB_URI":"mongodb+srv://username:password@cluster-key.mongodb.net/username?retryWrites=true&w=majority",
+  "DB_URI": "[LOCAL DB] mongodb://localhost/test-app",
+  "DB_URI": "[LOCAL/No DB] mongodb://127.0.0.1:27017",
+  "[DEPRECATED] Mongo-Directions": {
+    "1-Install": "install mongodb 3.6 (save as C:/users/username/mongo)",
+    "2-Local Storage": "establish a local storage folder (c:/users/username/mongo-data)"
+    "3-CMD Terminal": {
+      "navigate to mongodb location":"cd c:/users/username/mongo/Server/3.6/bin/",
+      "start local DB":"mongod --dbpath c:/users/username/mongo-data"
+    }
+  },
   "DB": "Google Cloud MySQL Database Instance",
   "HOST":"Google Cloud MySQL Host",
   "PT": "Port",
