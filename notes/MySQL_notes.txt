@@ -1,0 +1,8 @@
+https://ladvien.com/data-analytics-mysql-localhost-setup/
+
+1. Download & Install the MySQL Server + MySQL WorkBench Desktop Applications
+   The installation process automatically implements a root user/pw for the local instance.
+   The local instance is 127.0.0.1 (port 3306 by default)
+2. Create simple user_table for Proof of Concept (test authentication with nglenno18 gmail user)
+3. Update the configuration file to connect to the localhost instance (this will be updated when the configuration file is split into LOCAL/DEV/PROD)
+4. Run npm start and attempt to log into the localhost site through the test user's gmail account

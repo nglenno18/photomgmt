@@ -51,7 +51,7 @@ verify = function(req,res,buf,encoding){
 whitelist = function(req, res, next){
   console.log('\n\nWhitelist() Middleware Active');
   var env = "development";
-  if(process.env.NODE_ENV) env = "production";
+  if(process.env.NODE_ENV) env = process.env.NODE_ENV;  // env = "production";
   console.log('ENV = ', env);
   var userIP = req.get('X-Forwarded-For')+'';
   if(userIP === 'undefined') userIP = req.ip;
@@ -84,8 +84,8 @@ whitelist = function(req, res, next){
 requireHTTPS = function(req, res, next) {
   // The 'x-forwarded-proto' check is for Heroku
   if (!req.secure && req.get('x-forwarded-proto') != 'https'
-      && process.env.NODE_ENV != "development" && process.env.NODE_ENV
-                                                                        ) {
+      // && process.env.NODE_ENV != "development"
+      && process.env.NODE_ENV == 'production') {
     console.log('requireHTTPS : REDIRECT! : ', req.url);
     return res.redirect('https://' + req.get('host') + req.url);
   }
