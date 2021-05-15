@@ -6,6 +6,5 @@ JSONtoIIF.iif
 JSONtoIIF.txt
 token.txt
 JSONtoCSV.csv
-notes.txt
 config/service_account_key.json
 config/client_logins.json

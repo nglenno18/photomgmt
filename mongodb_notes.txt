@@ -1,0 +1,21 @@
+https://github.com/jdesboeufs/connect-mongo
+
+http://www.scotthasbrouck.com/blog/2016/3/18/passportjs-express-session-with-sockeio
+
+Session sessionMiddleware
+https://stackoverflow.com/questions/13095418/how-to-use-passport-with-express-and-socket-io
+
+Connecting to MongoDB:
+  mongo folder in c:/scripts/mongo
+                 (c:/users/glenn/mongo)
+  get to the bin:
+              cd c:/scripts/mongo/server/3.6/bin
+              (c:/users/glenn/mongo/server/3.6/bin)
+  Run the mongodb:
+              mongod --dbpath c:scripts/mongo-data
+              (mongod --dbpath c:/users/glenn/mongo-data)
+  Test DB in Separate CMD Terminal
+              C:\Scripts\mongo\Server\3.6\bin> mongo
+              C:\Users\glenn\mongo\Server\3.6\bin> mongo
+
+mongo mongodb://localhost:27017/testDB
